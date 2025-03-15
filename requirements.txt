@@ -1,5 +1,10 @@
 streamlit==1.30.0
 pandas==2.1.1
-numpy==2.2.3
+numpy==1.23.0
 matplotlib==3.8.0
 seaborn==0.11.2
+altair<6,>=4.0
+blinker<2,>=1.0.0
+cachetools<6,>=4.0
+click<9,>=7.0
+importlib-metadata<8,>=1.4
