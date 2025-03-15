@@ -67,7 +67,7 @@ with st.container():
             """
             <p style="font-size: 21px;"><b>My expertise lies in optimization and prediction.</b></p>
             <ul>
-                <li style="font-size: 20px;"><b>Optimization:</b> My experience focuses on transforming intricate financial and regulatory constraints into structured, solvable frameworks. Whether ensuring compliance with evolving market regulations or optimizing resource allocation, I build solutions that balance efficiency and robustness.</li>
+                <li style="font-size: 20px;"><b>Optimization:</b> I specialize in transforming intricate financial and regulatory constraints into structured, solvable frameworks. Whether ensuring compliance with evolving market regulations or optimizing resource allocation, I build solutions that balance efficiency and robustness.</li>
                 <li style="font-size: 20px;"><b>Prediction:</b> I analyze trends and anomalies within data series using both linear and nonlinear models. I help businesses anticipate market movements, optimize strategies, and make informed financial decisions.</li>
             </ul>
             """, 

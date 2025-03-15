@@ -8,3 +8,5 @@ blinker<2,>=1.0.0
 cachetools<6,>=4.0
 click<9,>=7.0
 importlib-metadata<8,>=1.4
+streamlit
+streamlit-lottie
