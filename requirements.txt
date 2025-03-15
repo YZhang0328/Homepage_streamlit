@@ -10,4 +10,4 @@ click<9,>=7.0
 importlib-metadata<8,>=1.4
 streamlit
 streamlit-lottie
-opencv-python
+opencv-python-headless
