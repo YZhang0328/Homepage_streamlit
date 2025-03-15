@@ -59,16 +59,16 @@ with st.container():
         
         # Use st.markdown separately
         st.markdown(
-            '<p style="font-size: 21px;"> I am passionate about applying quantitative methods and statistical modeling to capture the volatility of capital markets, with a strong intellectual curiosity to explore the mathematics behind data patterns. </p>',
+            '<p style="font-size: 18px;"> I am passionate about applying quantitative methods and statistical modeling to capture the volatility of capital markets, with a strong intellectual curiosity to explore the mathematics behind data patterns. </p>',
             unsafe_allow_html=True
         )
 
         st.markdown(
             """
-            <p style="font-size: 21px;"><b>My expertise lies in optimization and prediction.</b></p>
+            <p style="font-size: 20px;"><b>My expertise lies in optimization and prediction.</b></p>
             <ul>
-                <li style="font-size: 20px;"><b>Optimization:</b> I specialize in transforming intricate financial and regulatory constraints into structured, solvable frameworks. Whether ensuring compliance with evolving market regulations or optimizing resource allocation, I build solutions that balance efficiency and robustness.</li>
-                <li style="font-size: 20px;"><b>Prediction:</b> I analyze trends and anomalies within data series using both linear and nonlinear models. I help businesses anticipate market movements, optimize strategies, and make informed financial decisions.</li>
+                <li style="font-size: 18px;"><b>Optimization:</b> I specialize in transforming intricate financial and regulatory constraints into structured, solvable frameworks. Whether ensuring compliance with evolving market regulations or optimizing resource allocation, I build solutions that balance efficiency and robustness.</li>
+                <li style="font-size: 18px;"><b>Prediction:</b> I analyze trends and anomalies within data series using both linear and nonlinear models. I help businesses anticipate market movements, optimize strategies, and make informed financial decisions.</li>
             </ul>
             """, 
             unsafe_allow_html=True
@@ -96,22 +96,22 @@ with st.container():
         st.header("What I do")
         st.write("##")
         st.markdown(
-            '<p style="font-size: 22px;"> I have a PhD in engineering. I subsequently worked as a postdoctoral research scientist from the University of Manchester. I am also a dedicated ambassador for women in engineering.  </p>',
+            '<p style="font-size: 20px;"> I have a PhD in engineering. I subsequently worked as a postdoctoral research scientist from the University of Manchester. I am also a dedicated ambassador for women in engineering.  </p>',
             unsafe_allow_html=True
         )
         st.markdown(
-            '<p style="font-size: 22px;"> After transitioning from academia, I now work as an energy modeller specializing in energy market optimization.  </p>',
+            '<p style="font-size: 20px;"> After transitioning from academia, I now work as an energy modeller specializing in energy market optimization.  </p>',
             unsafe_allow_html=True
         )
 
         st.markdown(
             """
-            <p style="font-size: 21px;"><b>My daily responsibilities include:</b></p>
+            <p style="font-size: 20px;"><b>My daily responsibilities include:</b></p>
             <ul>
-                <li style="font-size: 20px;">Working with Excel and Python, especially Pandas, to analyze and process large energy market datasets—including demand, supply, plant, region, and interflow data. I develop models that optimize electricity distribution across various sources such as gas, coal, solar, wind, hydro, and interconnectors. These models generate price forecasts and market trends to support financial decision-making in energy portfolios.</li>
-                <li style="font-size: 20px;">Adding features to market models, identifying input and modeling anomalies to ensure robustness.</li>
-                <li style="font-size: 20px;">Running scenario analyses to evaluate the impact of technological advancements, policy shifts, and economic trends on energy prices.</li>
-                <li style="font-size: 20px;">Constantly refining models and thinking, "There has to be a better way.</li>
+                <li style="font-size: 18px;">Working with Excel and Python, especially Pandas, to analyze and process large energy market datasets—including demand, supply, plant, region, and interflow data. I develop models that optimize electricity distribution across various sources such as gas, coal, solar, wind, hydro, and interconnectors. These models generate price forecasts and market trends to support financial decision-making in energy portfolios.</li>
+                <li style="font-size: 18px;">Adding features to market models, identifying input and modeling anomalies to ensure robustness.</li>
+                <li style="font-size: 18px;">Running scenario analyses to evaluate the impact of technological advancements, policy shifts, and economic trends on energy prices.</li>
+                <li style="font-size: 18px;">Constantly refining models and thinking, "There has to be a better way.</li>
             </ul>
             """, 
             unsafe_allow_html=True
