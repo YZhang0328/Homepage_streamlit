@@ -2,9 +2,6 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
-
-st.header("Past Research Experience")
-
 # ---- Research introduction ----
 with st.container():
     st.write("---")
@@ -29,9 +26,6 @@ with st.container():
         """, 
         unsafe_allow_html=True
     )
-    st.markdown(
-        '<p style="font-size: 20px;"> If this sounds interesting to you, feel free to contact me at the end of the page, and stay tuned for more content!  </p>',
-        unsafe_allow_html=True
-    )
+
 
 
