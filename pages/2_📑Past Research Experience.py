@@ -17,8 +17,9 @@ with st.container():
     # &nbsp; → Adds spaces before the list item to align it with the text above.
     st.markdown(
         """
-        <p style="font-size: 20px;"><b>The following work was accomplished during my postdoctoral research:</b></p>
+        <p style="font-size: 20px;"><b>The following work was accomplished during my academic journey:</b></p>
         <ul>
+            <li style="font-size: 20px;">postdoctoral research:</li>
             <li style="font-size: 18px;">Developed an optimization framework for wave energy converters (WECs) to minimize its levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization theory.</li>
             <li style="font-size: 18px;">Conduct the parameter sensitivity analysis to system performance, i.e., mining parameters that can enhance WEC productivity and efficiency, while reducing LCoE.</li>
             <li style="font-size: 18px;">Representative publications:</li>
@@ -29,6 +30,12 @@ with st.container():
                 <li style="margin-left: 15px;">Yujia Zhang and Guang Li. Towards Robust and High-performance Operations of Wave Energy Converters: an Adaptive Tube-based Model Predictive Control Approach. IFAC-PapersOnLine, 55(31):339-344, 2022.</li>
             </ol>
         </ul>
+
+        <ul>
+            <li style="font-size: 20px;">Doctoral research:</li>
+            <li style="font-size: 18px;">Developed an optimization framework for wave energy converters (WECs) to minimize its levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization theory.</li>
+        </ul>
+
         """, 
         unsafe_allow_html=True
     )
