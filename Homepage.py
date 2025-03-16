@@ -9,30 +9,6 @@ import numpy as np
 # Find more emojis here: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Yujia's homepage", page_icon=":house_with_garden:", layout="wide")
 
-st.markdown(
-    """
-    <style>
-        /* Increase font size and weight of sidebar navigation */
-        section[data-testid="stSidebar"] div[role="listbox"] > div {
-            font-size: 18px !important;
-            font-weight: bold !important;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Sidebar navigation
-page = st.sidebar.radio(["🏠 Homepage", "📂 Past Research Experience", "🗓️ Ongoing projects"])
-
-# Render the correct page based on selection
-if page == "🏠 Homepage":
-    st.title("Welcome to My Homepage!")
-elif page == "📂 Past Research Experience":
-    st.title("Past Research Experience")
-elif page == "🗓️ Ongoing projects":
-    st.title("Ongoing Projects")
-
 
 def load_lottieurl(url):
     r = requests.get(url)
