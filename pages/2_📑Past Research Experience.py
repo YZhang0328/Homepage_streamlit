@@ -1,13 +1,12 @@
 import streamlit as st
 
-st.title("Past Research Experience")
+st.header("Past Research Experience")
 
 # ---- Research introduction ----
 with st.container():
     st.write("---")
-    text_column, image_column = st.columns((0.7, 0.3))
+    text_column, image_column = st.columns((1, 0))
     with text_column:
-        st.header("What I do")
         st.write("##")
         st.markdown(
             '<p style="font-size: 18px;"> I am a former postdoctoral research scientist and have served as a reviewer for several prestigious journals. Additionally, I have been invited to speak at various academic conferences. </p>',
