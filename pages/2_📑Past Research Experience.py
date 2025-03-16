@@ -33,7 +33,9 @@ with st.container():
 
         <ul>
             <p style="font-size: 20px;"><b>-&nbsp;&nbsp;Doctoral research:</b></p>
-            <li style="font-size: 18px;">Developed an optimization framework for wave energy converters (WECs) to minimize its levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization theory.</li>
+            <li style="font-size: 18px;">Developed a WEC model through black-box system identification using historical input-output data.</li>
+            <li style="font-size: 18px;">Designed a linear optimal controller using quadratic programming (QP) to maximize wave energy under uncertainties, and validated its effectiveness through wave tank testing experiments. The control performance improved up to 260.94% under different sea states, in comparison with an industry-standard passive controller.</li>
+            <li style="font-size: 18px;">Designed a quantile regression-based machine learning algorithm to quantify uncertainties, which significantly enlarged the feasibility region of the control problem. Control performance was improved by 52.42\% compared against an industry-standard passive control approach.</li>
         </ul>
 
         """, 
