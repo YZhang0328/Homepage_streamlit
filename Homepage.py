@@ -5,7 +5,7 @@ from PIL import Image
 import cv2
 import numpy as np
 
-with open('styles.css') as f:
+with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Find more emojis here: https://www.webfx.com/tools/emoji-cheat-sheet/
