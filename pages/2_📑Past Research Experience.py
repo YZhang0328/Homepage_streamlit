@@ -1,5 +1,8 @@
 import streamlit as st
 
+st.set_page_config(playout="wide")
+
+
 st.header("Past Research Experience")
 
 # ---- Research introduction ----
