@@ -130,7 +130,7 @@ with st.container():
                 <li style="font-size: 18px;">Working with Excel and Python, especially Pandas, to analyze and process large energy market datasets—including demand, supply, plant, region, and interflow data. I develop models that optimize electricity distribution across various sources such as gas, coal, solar, wind, hydro, and interconnectors. These models generate price forecasts and market trends to support financial decision-making in energy portfolios.</li>
                 <li style="font-size: 18px;">Adding features to market models, identifying input and modeling anomalies to ensure robustness.</li>
                 <li style="font-size: 18px;">Running scenario analyses to evaluate the impact of technological advancements, policy shifts, and economic trends on energy prices.</li>
-                <li style="font-size: 18px;">Constantly refining models and thinking, "There has to be a better way.</li>
+                <li style="font-size: 18px;">Constantly refining models and thinking, "There has to be a better way".</li>
             </ul>
             """, 
             unsafe_allow_html=True
@@ -168,19 +168,34 @@ with st.container():
     st.header("Get In Touch With Me!")
     st.write("##")
 
-    # Documention: https://formsubmit.co/ !!! CHANGE EMAIL ADDRESS !!!
-    contact_form = """
-    <form action="https://formsubmit.co/el/nepuxo" method="POST" />
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="thank_you.html"> <!-- Optional redirect after submission -->
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="Your message here" required></textarea>
-        <button type="submit">Send</button>
-    </form>
-    """
     left_column, right_column = st.columns(2)
+    
     with left_column:
-        st.markdown(contact_form, unsafe_allow_html=True)
+        with st.form(key="contact_form"):
+            name = st.text_input("Your Name")
+            email = st.text_input("Your Email")
+            message = st.text_area("Your Message")
+
+            submit_button = st.form_submit_button("Send")
+
+            if submit_button:
+                if name and email and message:
+                    submit_url = "https://formsubmit.co/el/nepuxo"
+                    payload = {
+                        "name": name,
+                        "email": email,
+                        "message": message,
+                        "_captcha": "false",
+                        "_next": "thank_you.html"  # Optional: Redirect after submission
+                    }
+                    response = requests.post(submit_url, data=payload)
+
+                    if response.status_code == 200:
+                        st.success("Message sent successfully!")
+                    else:
+                        st.error("Something went wrong. Please try again.")
+                else:
+                    st.warning("Please fill in all fields before submitting.")
+
     with right_column:
         st.empty()
