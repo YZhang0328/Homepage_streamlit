@@ -13,10 +13,10 @@ input[type=message], input[type=email], input[type=text], textarea {
 
 
 h1 {
-  font-size: 50px;
+  font-size: 40px;
 }
 h2 {
-  font-size: 40px;
+  font-size: 30px;
 }
 p {
   font-size: 18px;

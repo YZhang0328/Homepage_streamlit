@@ -9,6 +9,25 @@ import numpy as np
 # Find more emojis here: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Yujia's homepage", page_icon=":house_with_garden:", layout="wide")
 
+# Custom CSS for sidebar subpage font styling
+st.markdown(
+    """
+    <style>
+        /* Change the font of sidebar text */
+        section[data-testid="stSidebar"] .css-1v0mbdj { 
+            font-family: 'Arial', sans-serif; /* Change font */
+            font-size: 18px; /* Adjust size */
+            font-weight: bold; /* Optional: make it bold */
+            color: #ff4b4b; /* Optional: change text color */
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.sidebar.title("Main Page")
+st.sidebar.subheader("Subpage 1")
+st.sidebar.subheader("Subpage 2")
 
 def load_lottieurl(url):
     r = requests.get(url)
@@ -96,11 +115,11 @@ with st.container():
         st.header("What I do")
         st.write("##")
         st.markdown(
-            '<p style="font-size: 20px;"> I have a PhD in engineering. I subsequently worked as a postdoctoral research scientist from the University of Manchester. I am also a dedicated ambassador for women in engineering.  </p>',
+            '<p style="font-size: 18px;"> I have a PhD in engineering. I subsequently worked as a postdoctoral research scientist from the University of Manchester. I am also a dedicated ambassador for women in engineering.  </p>',
             unsafe_allow_html=True
         )
         st.markdown(
-            '<p style="font-size: 20px;"> After transitioning from academia, I now work as an energy modeller specializing in energy market optimization.  </p>',
+            '<p style="font-size: 18px;"> After transitioning from academia, I now work as an energy modeller specializing in energy market optimization.  </p>',
             unsafe_allow_html=True
         )
 
@@ -117,7 +136,7 @@ with st.container():
             unsafe_allow_html=True
         )
         st.markdown(
-            '<p style="font-size: 22px;"> If this sounds interesting to you, feel free to contact me at the end of the page, and stay tuned for more content!  </p>',
+            '<p style="font-size: 20px;"> If this sounds interesting to you, feel free to contact me at the end of the page, and stay tuned for more content!  </p>',
             unsafe_allow_html=True
         )
     with image_column:
@@ -141,6 +160,7 @@ with st.container():
             """
         )
         st.markdown("[Watch Video...](https://youtu.be/TXSOitGoINE)")
+
 
 # ---- CONTACT ----
 with st.container():

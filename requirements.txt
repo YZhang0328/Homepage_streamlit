@@ -11,3 +11,5 @@ importlib-metadata<8,>=1.4
 streamlit
 streamlit-lottie
 opencv-python-headless
+Pillow
+requests
