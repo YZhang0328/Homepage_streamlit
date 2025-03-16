@@ -170,7 +170,7 @@ with st.container():
 
     # Documention: https://formsubmit.co/ !!! CHANGE EMAIL ADDRESS !!!
     contact_form = """
-    <form action="https://formsubmit.co/el/nepuxo" method="POST">
+    <form action="https://formsubmit.co/el/nepuxo" method="POST" />
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="thank_you.html"> <!-- Optional redirect after submission -->
         <input type="text" name="name" placeholder="Your name" required>
