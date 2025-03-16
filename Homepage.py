@@ -5,6 +5,8 @@ from PIL import Image
 import cv2
 import numpy as np
 
+with open('styles.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Find more emojis here: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Yujia's homepage", page_icon=":house_with_garden:", layout="wide")
@@ -23,7 +25,7 @@ def local_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
-local_css("style/style.css")
+# local_css("style/style.css")
 
 
 image = cv2.imread("images/Photo_Yujia.jpg")
@@ -149,7 +151,7 @@ with st.container():
     st.header("Get In Touch With Me!")
     st.write("##")
 
-    left_column, right_column = st.columns(2)
+    left_column, right_column = st.columns(10,1)
 
     with left_column:
         with st.form(key="contact_form"):
