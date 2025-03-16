@@ -170,16 +170,22 @@ with st.container():
 
     # Documention: https://formsubmit.co/ !!! CHANGE EMAIL ADDRESS !!!
     contact_form = """
-    <form action="https://formsubmit.co/yujia.zhang.uom@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="thank_you.html"> <!-- Optional: Redirect after submission -->
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="Your message here" required></textarea>
+    <form action="https://formsubmit.co/your@email.com" method="POST">
+        <input type="text" name="name" required>
+        <input type="email" name="email" required>
         <button type="submit">Send</button>
-        <input type="hidden" name="_next" value="thank_you.html">
     </form>
+
     """
+    # <form action="https://formsubmit.co/yujia.zhang.uom@gmail.com" method="POST">
+    #     <input type="hidden" name="_captcha" value="false">
+    #     <input type="hidden" name="_next" value="thank_you.html"> <!-- Optional: Redirect after submission -->
+    #     <input type="text" name="name" placeholder="Your name" required>
+    #     <input type="email" name="email" placeholder="Your email" required>
+    #     <textarea name="message" placeholder="Your message here" required></textarea>
+    #     <button type="submit">Send</button>
+    #     <input type="hidden" name="_next" value="thank_you.html">
+    # </form>
     
     left_column, right_column = st.columns(2)
     with left_column:
