@@ -23,8 +23,7 @@ st.markdown(
 )
 
 # Sidebar navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["🏠 Homepage", "📂 Past Research Experience", "🗓️ Ongoing projects"])
+page = st.sidebar.radio(["🏠 Homepage", "📂 Past Research Experience", "🗓️ Ongoing projects"])
 
 # Render the correct page based on selection
 if page == "🏠 Homepage":

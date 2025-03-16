@@ -11,6 +11,17 @@ input[type=message], input[type=email], input[type=text], textarea {
   resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
+/* Change font of sidebar page names */
+.css-1p5t0u8 { /* Sidebar page name container */
+  font-family: 'Arial', sans-serif !important; /* Change to your desired font */
+  font-size: 16px !important;
+}
+
+/* Optional: Customize sidebar header font */
+.css-1wa3eu0 { /* Sidebar header container */
+  font-family: 'Georgia', serif !important; /* Change to your desired font */
+}
+
 
 h1 {
   font-size: 40px;
