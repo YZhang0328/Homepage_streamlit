@@ -9,25 +9,25 @@ import numpy as np
 # Find more emojis here: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Yujia's homepage", page_icon=":house_with_garden:", layout="wide")
 
-# Custom CSS for sidebar subpage font styling
+# Apply custom CSS
 st.markdown(
     """
     <style>
-        /* Change the font of sidebar text */
-        section[data-testid="stSidebar"] .css-1v0mbdj { 
-            font-family: 'Arial', sans-serif; /* Change font */
-            font-size: 18px; /* Adjust size */
-            font-weight: bold; /* Optional: make it bold */
-            color: #ff4b4b; /* Optional: change text color */
+        /* Increase the font size of sidebar navigation */
+        section[data-testid="stSidebar"] div a {
+            font-size: 18px !important;
+            font-weight: bold !important;
         }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-st.sidebar.title("Main Page")
-st.sidebar.subheader("Subpage 1")
-st.sidebar.subheader("Subpage 2")
+# Sidebar navigation
+st.sidebar.title("Navigation")
+st.sidebar.page_link("Homepage.py", label="🏠 Home")
+st.sidebar.page_link("Projects.py", label="📂 Past Research Experience")
+st.sidebar.page_link("Contact.py", label="📧 Contact")
 
 def load_lottieurl(url):
     r = requests.get(url)
@@ -185,7 +185,7 @@ with st.container():
                         "name": name,
                         "email": email,
                         "message": message,
-                        "_replyto": email,  
+                        "_replyto": "yujia.zhang.uom@gmail.com",  
                         "_captcha": "false",
                         "_next": "thank_you.html"  
                     }
@@ -199,4 +199,4 @@ with st.container():
                     st.warning("Please fill in all fields before submitting.")
 
     with right_column:
-        st.empty()
+        st.write("Or send to the email address: yujia.zhang.uom@gmail.com")
