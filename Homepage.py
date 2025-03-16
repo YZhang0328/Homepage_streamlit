@@ -160,7 +160,7 @@ with st.container():
 
             if submit_button:
                 if name and email and message:
-                    submit_url = "https://formsubmit.co/el/nepuxo"
+                    submit_url = "https://formsubmit.co/yujia.zhang.uom@gmail.com"
                     payload = {
                         "name": name,
                         "email": email,
