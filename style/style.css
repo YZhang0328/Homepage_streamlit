@@ -14,7 +14,7 @@ input[type=message], input[type=email], input[type=text], textarea {
 /* Change font of sidebar page names */
 .css-1p5t0u8 { /* Sidebar page name container */
   font-family: 'Arial', sans-serif !important; /* Change to your desired font */
-  font-size: 16px !important;
+  font-size: 20px !important;
 }
 
 /* Optional: Customize sidebar header font */

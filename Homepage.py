@@ -178,6 +178,7 @@ with st.container():
                         st.error("Something went wrong. Please try again.")
                 else:
                     st.warning("Please fill in all fields before submitting.")
+            st.write("Or send to the email address: yujia.zhang.uom@gmail.com")
 
     with right_column:
-        st.write("Or send to the email address: yujia.zhang.uom@gmail.com")
+        st.empty()
