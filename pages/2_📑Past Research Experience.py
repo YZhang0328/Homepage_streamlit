@@ -18,20 +18,24 @@ with st.container():
     st.markdown(
         """
         <p style="font-size: 20px;"><b>The following work was accomplished during my academic journey:</b></p>
-        
-        <p style="font-size: 20px;"><b>- Postdoctoral research:</b></p>
-        <p style="font-size: 18px;">- Developed an optimization framework for wave energy converters (WECs) to minimize its levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization theory.</p>
-        <p style="font-size: 18px;">- Conducted parameter sensitivity analysis to system performance, i.e., mining parameters that can enhance WEC productivity and efficiency while reducing LCoE.</p>
-        <p style="font-size: 18px;"><b>- Representative publications:</b></p>
+        <ul>
+            <p style="font-size: 20px;">-</span>Postdoctoral research:</p>
+            <li style="font-size: 18px;">Developed an optimization framework for wave energy converters (WECs) to minimize its levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization theory.</li>
+            <li style="font-size: 18px;">Conduct the parameter sensitivity analysis to system performance, i.e., mining parameters that can enhance WEC productivity and efficiency, while reducing LCoE.</li>
+            <li style="font-size: 18px;">Representative publications:</li>
+            <ol style="font-size: 18px; padding-left: 30px;">
+                <li style="margin-left: 15px;">Yujia Zhang and Guang Li. Robust tube-based model predictive control for wave energy converters. IEEE Transactions on Sustainable Energy (2022).</li>
+                <li style="margin-left: 15px;">Yujia Zhang, Hongbiao Zhao, Guang Li, Christopher Edwards, and Mike Belmont. Robust nonlinear model predictive control of an autonomous launch and recovery system. IEEE Transactions on Control Systems Technology (2023).</li>
+                <li style="margin-left: 15px;">Yujia Zhang, Guang Li and Mustafa Al-Ani. Robust Learning-based Model Predictive Control for Wave Energy Converters. IEEE Transactions on Sustainable Energy (2024).</li>
+                <li style="margin-left: 15px;">Yujia Zhang and Guang Li. Towards Robust and High-performance Operations of Wave Energy Converters: an Adaptive Tube-based Model Predictive Control Approach. IFAC-PapersOnLine, 55(31):339-344, 2022.</li>
+            </ol>
+        </ul>
 
-        <p style="font-size: 18px; padding-left: 20px;">- Yujia Zhang and Guang Li. Robust tube-based model predictive control for wave energy converters. IEEE Transactions on Sustainable Energy (2022).</p>
-        <p style="font-size: 18px; padding-left: 20px;">- Yujia Zhang, Hongbiao Zhao, Guang Li, Christopher Edwards, and Mike Belmont. Robust nonlinear model predictive control of an autonomous launch and recovery system. IEEE Transactions on Control Systems Technology (2023).</p>
-        <p style="font-size: 18px; padding-left: 20px;">- Yujia Zhang, Guang Li and Mustafa Al-Ani. Robust Learning-based Model Predictive Control for Wave Energy Converters. IEEE Transactions on Sustainable Energy (2024).</p>
-        <p style="font-size: 18px; padding-left: 20px;">- Yujia Zhang and Guang Li. Towards Robust and High-performance Operations of Wave Energy Converters: an Adaptive Tube-based Model Predictive Control Approach. IFAC-PapersOnLine, 55(31):339-344, 2022.</p>
+        <ul>
+            <p style="font-size: 20px;">-</span>Doctoral research:</p>
+            <li style="font-size: 18px;">Developed an optimization framework for wave energy converters (WECs) to minimize its levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization theory.</li>
+        </ul>
 
-        <p style="font-size: 20px;"><b>- Doctoral research:</b></p>
-        <p style="font-size: 18px;">- Developed an optimization framework for wave energy converters (WECs) to minimize its levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization theory.</p>
-        
         """, 
         unsafe_allow_html=True
     )
