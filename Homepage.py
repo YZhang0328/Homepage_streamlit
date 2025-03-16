@@ -148,7 +148,7 @@ with st.container():
     st.header("Get In Touch With Me!")
     st.write("##")
 
-    left_column, right_column = st.columns(10,1)
+    left_column, right_column = st.columns(0.9,0.1)
 
     with left_column:
         with st.form(key="contact_form"):
