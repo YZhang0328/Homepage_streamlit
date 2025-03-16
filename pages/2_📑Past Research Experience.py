@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(playout="wide")
+st.set_page_config(layout="wide")
 
 
 st.header("Past Research Experience")
