@@ -165,11 +165,14 @@ with st.container():
                         "name": name,
                         "email": email,
                         "message": message,
-                        "_replyto": "yujia.zhang.uom@gmail.com",  
+                        "_replyto": email,  # Ensuring the reply-to address is correct
                         "_captcha": "false",
-                        "_next": "thank_you.html"  
+                        "_next": "thank_you.html"
                     }
                     response = requests.post(submit_url, data=payload)
+
+                    st.write("Response status code:", response.status_code)
+                    st.write("Response content:", response.text)
 
                     if response.status_code == 200:
                         st.success("Message sent successfully!")
@@ -178,6 +181,5 @@ with st.container():
                 else:
                     st.warning("Please fill in all fields before submitting.")
             st.write("Or send to the email address: yujia.zhang.uom@gmail.com")
-
     with right_column:
         st.empty()
