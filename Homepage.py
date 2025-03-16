@@ -169,7 +169,7 @@ with st.container():
     st.write("##")
 
     left_column, right_column = st.columns(2)
-    
+
     with left_column:
         with st.form(key="contact_form"):
             name = st.text_input("Your Name")
@@ -185,8 +185,9 @@ with st.container():
                         "name": name,
                         "email": email,
                         "message": message,
+                        "_replyto": email,  
                         "_captcha": "false",
-                        "_next": "thank_you.html"  # Optional: Redirect after submission
+                        "_next": "thank_you.html"  
                     }
                     response = requests.post(submit_url, data=payload)
 
