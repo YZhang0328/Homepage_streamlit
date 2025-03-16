@@ -170,7 +170,7 @@ with st.container():
 
     # Documention: https://formsubmit.co/ !!! CHANGE EMAIL ADDRESS !!!
     contact_form = """
-    <form action="https://formsubmit.co/your@email.com" method="POST">
+    <form action="https://formsubmit.co/yujia.zhang.uom@gmail.com" method="POST">
         <input type="text" name="name" required>
         <input type="email" name="email" required>
         <button type="submit">Send</button>
