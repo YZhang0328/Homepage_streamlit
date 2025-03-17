@@ -6,7 +6,7 @@ import os
 st.set_page_config(layout="wide")
 
 # Load the image using OpenCV and save it in PNG format
-image_path = "images/under_construction_1.png"
+image_path = "images/under_construction.png"
 
 # Check if the image file exists
 if not os.path.exists(image_path):
@@ -26,7 +26,7 @@ else:
         cv2.imwrite(output_path, bgra)
 
         # ---- HEADER SECTION ----
-        st.title("Optimizing Crypto Asset Portfolios with Data Driven Techniques")
+        st.title("Data Tools")
 
         # Display the image
         img_contact_form = Image.open(output_path)
