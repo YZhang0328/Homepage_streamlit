@@ -27,11 +27,10 @@ else:
 
         # ---- HEADER SECTION ----
         st.title("Optimizing Crypto Asset Portfolios with Data Driven Techniques")
-        st.title("Under Construction")
 
         # Display the image
         img_contact_form = Image.open(output_path)
         st.image(img_contact_form, caption="Page under construction", use_column_width=True)
 
         # Display a message
-        st.write("This page is under construction :)")
+        st.header("This page is under construction :)")
