@@ -6,7 +6,7 @@ import os
 st.set_page_config(layout="wide")
 
 # Load the image using OpenCV and save it in PNG format
-image_path = "images/under_construction_1.jpg"
+image_path = "images/under_construction_1.png"
 
 # Check if the image file exists
 if not os.path.exists(image_path):
