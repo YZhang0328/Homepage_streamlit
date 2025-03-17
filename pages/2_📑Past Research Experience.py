@@ -40,7 +40,7 @@ with st.container():
 
         <ul>
             <p style="font-size: 20px;"><b>-&nbsp;&nbsp;Undergraduate research experience:</b></p>
-            <li style="font-size: 18px;">Worked on deep Learning for Weakly Supervised Target Detection in Remote Sensing images.</li>
+            <li style="font-size: 18px;"><b>Worked on deep Learning for Weakly Supervised Target Detection in Remote Sensing images.<b></li>
             <li style="font-size: 18px;">Developed a target detection framework using few image samples, which is achieved by feeding the samples to multiple neural networks (NNs) in an easy-to-difficult order, known as the self-paced learning strategy.</li>
             <li style="font-size: 18px;">The framework can generate more pseudo bounding boxes and improved the accuracy of the bounding boxes by updating each NN during the training process, till the convergence of a defined loss function.</li>
         </ul>
