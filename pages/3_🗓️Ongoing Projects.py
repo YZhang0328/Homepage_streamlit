@@ -33,4 +33,4 @@ else:
         st.image(img_contact_form, caption="Page under construction", width=300)
 
         # Display a message
-        st.header("This page is under construction :)")
+        st.header("This page is under construction 😎")
