@@ -22,7 +22,7 @@ else:
         bgra = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
         # Save the image as PNG
-        output_path = "images/under_construction_1.png"
+        output_path = "images/under_construction.png"
         cv2.imwrite(output_path, bgra)
 
         # ---- HEADER SECTION ----
@@ -30,7 +30,7 @@ else:
 
         # Display the image
         img_contact_form = Image.open(output_path)
-        st.image(img_contact_form, caption="Page under construction", use_column_width=True)
+        st.image(img_contact_form, caption="Page under construction", width=300)
 
         # Display a message
         st.header("This page is under construction :)")
