@@ -135,8 +135,6 @@ with st.container():
         st.write(
             """
             Learn how to use Lottie Files in Streamlit!
-            Animations make our web app more engaging and fun, and Lottie Files are the easiest way to do it!
-            In this tutorial, I'll show you exactly how to do it
             """
         )
         st.markdown("[Watch Video...](https://youtu.be/TXSOitGoINE)")

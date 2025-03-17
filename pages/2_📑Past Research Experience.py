@@ -35,7 +35,14 @@ with st.container():
             <p style="font-size: 20px;"><b>-&nbsp;&nbsp;Doctoral research:</b></p>
             <li style="font-size: 18px;">Developed a WEC model through black-box system identification using historical input-output data.</li>
             <li style="font-size: 18px;">Designed a linear optimal controller using quadratic programming (QP) to maximize wave energy under uncertainties, and validated its effectiveness through wave tank testing experiments. The control performance improved up to 260.94% under different sea states, in comparison with an industry-standard passive controller.</li>
-            <li style="font-size: 18px;">Designed a quantile regression-based machine learning algorithm to quantify uncertainties, which significantly enlarged the feasibility region of the control problem. Control performance was improved by 52.42\% compared against an industry-standard passive control approach.</li>
+            <li style="font-size: 18px;">Designed a quantile regression-based machine learning algorithm to quantify uncertainties, which significantly enlarged the feasibility region of the control problem. Control performance was improved by 52.42% compared against an industry-standard passive control approach.</li>
+        </ul>
+
+        <ul>
+            <p style="font-size: 20px;"><b>-&nbsp;&nbsp;Undergraduate research experience:</b></p>
+            <li style="font-size: 18px;">Worked on deep Learning for Weakly Supervised Target Detection in Remote Sensing images.</li>
+            <li style="font-size: 18px;">Developed a target detection framework using few image samples, which is achieved by feeding the samples to multiple neural networks (NNs) in an easy-to-difficult order, known as the self-paced learning strategy.</li>
+            <li style="font-size: 18px;">The framework can generate more pseudo bounding boxes and improved the accuracy of the bounding boxes by updating each NN during the training process, till the convergence of a defined loss function.</li>
         </ul>
 
         """, 
