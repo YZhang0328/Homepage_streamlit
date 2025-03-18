@@ -120,7 +120,8 @@ with st.container():
             unsafe_allow_html=True
         )
     with image_column:
-        st_lottie(lottie_coding, height=400, key="coding")
+        gif_path = "images/Aurora_scheme.gif"  # Replace with your GIF file path
+        st.image(gif_path, caption="Wholesale electricity market", use_column_width=True)
 
 # ---- PROJECTS ----
 with st.container():
