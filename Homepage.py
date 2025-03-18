@@ -86,44 +86,39 @@ with st.container():
                 mime="CV_for_application/pdf"
             )
 
-
 # ---- WHAT I DO ----
 with st.container():
     st.write("---")
-    text_column, image_column = st.columns((0.7, 0.3))
-    with text_column:
-        st.header("What I do")
-        st.write("##")
-        st.markdown(
-            '<p style="font-size: 18px;"> I have a PhD in engineering. I subsequently worked as a postdoctoral research scientist from the University of Manchester. I am also a dedicated ambassador for women in engineering.  </p>',
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            '<p style="font-size: 18px;"> After transitioning from academia, I now work as an energy modeller specializing in energy market optimization.  </p>',
-            unsafe_allow_html=True
-        )
+    st.header("What I do")
+    st.write("##")
+    st.markdown(
+        '<p style="font-size: 18px;"> I have a PhD in engineering. I subsequently worked as a postdoctoral research scientist from the University of Manchester. I am also a dedicated ambassador for women in engineering.  </p>',
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        '<p style="font-size: 18px;"> After transitioning from academia, I now work as an energy modeller specializing in energy market optimization.  </p>',
+        unsafe_allow_html=True
+    )
 
-        gif_path = "images/Aurora_scheme.gif"  # Replace with your GIF file path
-        st.image(gif_path, caption="Wholesale electricity market", use_column_width=True)
+    gif_path = "images/Aurora_scheme.gif"  # Replace with your GIF file path
+    st.image(gif_path, caption="Wholesale electricity market", use_column_width=True)
 
-        st.markdown(
-            """
-            <p style="font-size: 20px;"><b>My daily responsibilities include:</b></p>
-            <ul>
-                <li style="font-size: 18px;">Working with Excel and Python, especially Pandas, to analyze and process large energy market datasets—including demand, supply, plant, region, and interflow data. I develop models that optimize electricity distribution across various sources such as gas, coal, solar, wind, hydro, and interconnectors. These models generate price forecasts and market trends to support financial decision-making in energy portfolios.</li>
-                <li style="font-size: 18px;">Adding features to market models, identifying input and modeling anomalies to ensure robustness.</li>
-                <li style="font-size: 18px;">Running scenario analyses to evaluate the impact of technological advancements, policy shifts, and economic trends on energy prices.</li>
-                <li style="font-size: 18px;">Constantly refining models and thinking, "There has to be a better way".</li>
-            </ul>
-            """, 
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            '<p style="font-size: 20px;"> If this sounds interesting to you, feel free to contact me at the end of the page, and stay tuned for more content!  </p>',
-            unsafe_allow_html=True
-        )
-    with image_column:
-        st_lottie(lottie_coding, height=400, key="coding")
+    st.markdown(
+        """
+        <p style="font-size: 20px;"><b>My daily responsibilities include:</b></p>
+        <ul>
+            <li style="font-size: 18px;">Working with Excel and Python, especially Pandas, to analyze and process large energy market datasets—including demand, supply, plant, region, and interflow data. I develop models that optimize electricity distribution across various sources such as gas, coal, solar, wind, hydro, and interconnectors. These models generate price forecasts and market trends to support financial decision-making in energy portfolios.</li>
+            <li style="font-size: 18px;">Adding features to market models, identifying input and modeling anomalies to ensure robustness.</li>
+            <li style="font-size: 18px;">Running scenario analyses to evaluate the impact of technological advancements, policy shifts, and economic trends on energy prices.</li>
+            <li style="font-size: 18px;">Constantly refining models and thinking, "There has to be a better way".</li>
+        </ul>
+        """, 
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        '<p style="font-size: 20px;"> If this sounds interesting to you, feel free to contact me at the end of the page, and stay tuned for more content!  </p>',
+        unsafe_allow_html=True
+    )
 
 # ---- PROJECTS ----
 with st.container():
