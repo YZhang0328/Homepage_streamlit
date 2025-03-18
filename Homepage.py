@@ -101,8 +101,7 @@ with st.container():
     )
 
     gif_path = "images/Aurora_scheme.gif"  # Replace with your GIF file path
-    st.image(gif_path, caption="Wholesale electricity market optimization", width=500)
-
+    st.image(gif_path, caption="Wholesale electricity market optimization", use_column_width=True)
     st.markdown(
         """
         <p style="font-size: 20px;"><b>My daily responsibilities include:</b></p>
