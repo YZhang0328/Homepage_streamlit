@@ -111,7 +111,7 @@ with st.container():
     st.markdown(
         f"""
         <div style="display: flex; justify-content: center;">
-            <img src="data:image/gif;base64,{gif_base64}" alt="GIF" style="width: 500px; height: auto;">
+            <img src="data:image/gif;base64,{gif_base64}" alt="GIF" style="width: 600px; height: auto;">
         </div>
         """,
         unsafe_allow_html=True
