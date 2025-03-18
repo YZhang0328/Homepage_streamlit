@@ -101,7 +101,7 @@ with st.container():
     )
 
     gif_path = "images/Aurora_scheme.gif"  # Replace with your GIF file path
-    st.image(gif_path, caption="Wholesale electricity market optimization", width=300)
+    st.image(gif_path, caption="Wholesale electricity market optimization", width=500)
 
     st.markdown(
         """
