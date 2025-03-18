@@ -101,7 +101,7 @@ with st.container():
     )
 
     gif_path = "images/Aurora_scheme.gif"  # Replace with your GIF file path
-    st.image(gif_path, caption="Wholesale electricity market", use_column_width=True)
+    st.image(gif_path, caption="Wholesale electricity market optimization", width=300)
 
     st.markdown(
         """
@@ -119,23 +119,6 @@ with st.container():
         '<p style="font-size: 20px;"> If this sounds interesting to you, feel free to contact me at the end of the page, and stay tuned for more content!  </p>',
         unsafe_allow_html=True
     )
-
-# ---- PROJECTS ----
-with st.container():
-    st.write("---")
-    st.header("My Projects")
-    st.write("##")
-    image_column, text_column = st.columns((1, 2))
-    with image_column:
-        st.image(img_lottie_animation)
-    with text_column:
-        st.subheader("Integrate Lottie Animations Inside Your Streamlit App")
-        st.write(
-            """
-            Learn how to use Lottie Files in Streamlit!
-            """
-        )
-        st.markdown("[Watch Video...](https://youtu.be/TXSOitGoINE)")
 
 
 # ---- CONTACT ----
