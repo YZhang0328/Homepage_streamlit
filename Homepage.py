@@ -4,6 +4,7 @@ from streamlit_lottie import st_lottie
 from PIL import Image
 import cv2
 import numpy as np
+import base64
 
 # Find more emojis here: https://www.webfx.com/tools/emoji-cheat-sheet/
 st.set_page_config(page_title="Yujia's homepage", page_icon=":house_with_garden:", layout="wide")
@@ -100,11 +101,17 @@ with st.container():
         unsafe_allow_html=True
     )
 
-    gif_path = "images/Aurora_scheme.gif"  # Replace with your GIF file path
+    def get_base64_of_file(file_path):
+        with open(file_path, "rb") as file:
+            return base64.b64encode(file.read()).decode()
+
+    gif_path = "images/Aurora_scheme.gif"
+    gif_base64 = get_base64_of_file(gif_path)
+
     st.markdown(
         f"""
         <div style="display: flex; justify-content: center;">
-            <img src="{gif_path}" alt="GIF" style="width: 500px; height: auto;">
+            <img src="data:image/gif;base64,{gif_base64}" alt="GIF" style="width: 500px; height: auto;">
         </div>
         """,
         unsafe_allow_html=True
