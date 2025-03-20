@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 # ---- Research introduction ----
 
 with st.container():
-    text_column, image_column = st.columns((4, 3))
+    text_column, image_column = st.columns((10, 7))
     with text_column:
         st.markdown(
             """
@@ -21,33 +21,32 @@ with st.container():
 
         # Use st.markdown separately
         st.markdown(
-            '<p style="font-size: 20px;"> In most of my research, I worked extensively with mathematics, focusing on an algorithm called model predictive control, a powerful approach that integrates <b>Optimization</b> and <b>prediction</b> to enhance decision-making in dynamic systems.  </p>',
+            '<p style="font-size: 20px;"> In most of my research, I <b>worked extensively with mathematics</b>, focusing on an algorithm called model predictive control, a powerful approach that integrates <b>optimization</b> and <b>prediction</b> to enhance decision-making in dynamic systems.  </p>',
             unsafe_allow_html=True
         )
         
         st.markdown(
-            '<p style="font-size: 20px;"> Beyond control theory, I have also gained substantial experience in machine learning, leveraging data-driven approaches to enhance system modeling, do prediction and classification. </p>',
+            '<p style="font-size: 20px;"> Beyond control theory, I have also gained substantial experience in <b>machine learning</b>, leveraging data-driven approaches to enhance system modeling, do prediction and classification. </p>',
             unsafe_allow_html=True
         )
 
         st.markdown(
-            '<p style="font-size: 20px;"> I have approximately one year of postdoctoral research experience, endorsed by UK Research and Innovation (UKRI) and the Royal Society of Engineering. During that time, I have served as a reviewer for prestigious journals. Additionally, I was an invited speaker for symposiums and academic conferences. </p>',
+            '<p style="font-size: 20px;"> I have approximately one year of postdoctoral research experience, endorsed by <b>UK Research and Innovation (UKRI)</b> and the <b>Royal Society of Engineering</b>. During that time, I have served as a reviewer for prestigious journals. I was also an invited speaker for symposiums and academic conferences, where the following work was accomplished: </p>',
             unsafe_allow_html=True
         )
 
         st.markdown(
             """
-            <p style="font-size: 22px;">The following work was accomplished during my postdoctoral research, where I've </p>
             <ul>
-                <li style="font-size: 20px;"> Developed an optimization framework for wave energy converters (WECs) to minimize levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization. </li>
-                <li style="font-size: 20px;"> Conduct the parameter sensitivity analysis to system performance, i.e., mining parameters that can enhance WEC productivity and efficiency, while reducing LCoE. </li>
+                <li style="font-size: 20px;"> An optimization framework for wave energy converters (WECs) to minimize levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization. </li>
+                <li style="font-size: 20px;"> Testing parameter sensitivity of system performance, i.e., find parameters that can enhance WEC productivity and efficiency, while reducing LCoE. </li>
             </ul>
             """, 
             unsafe_allow_html=True
         )
 
         st.markdown(
-            '<p style="font-size: 20px;"> During my PhD, I worked on data-driven renewable energy system modelling and control, where I\'ve </p>',
+            '<p style="font-size: 20px;"> During my PhD, I worked on <b>data-driven renewable energy system modelling and control</b>, where I\'ve </p>',
             unsafe_allow_html=True
         )
 
