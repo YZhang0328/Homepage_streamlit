@@ -38,7 +38,7 @@ with st.container():
         st.markdown(
             """
             <ul>
-                <li style="font-size: 20px;"> An optimization framework for wave energy converters (WECs) to minimize levelized cost of electricity (LCOE) via mixed integer nonlinear programming (MINLP) and robust optimization. </li>
+                <li style="font-size: 20px;"> An optimization framework for wave energy converters (WECs) to minimize levelized cost of electricity (LCOE) via <b>mixed integer nonlinear programming (MINLP)</b> and <b>robust optimization</b>. </li>
                 <li style="font-size: 20px;"> Testing parameter sensitivity of system performance, i.e., find parameters that can enhance WEC productivity and efficiency, while reducing LCoE. </li>
             </ul>
             """, 
@@ -53,9 +53,9 @@ with st.container():
         st.markdown(
             """
             <ul>
-                <li style="font-size: 20px;"> Developed a WEC model through black-box system identification using historical input-output data. </li>
-                <li style="font-size: 20px;"> Designed a linear optimal controller using quadratic programming (QP) to maximize wave energy under uncertainties, and validated its effectiveness through wave tank testing experiments. </li>
-                <li style="font-size: 20px;"> Designed a quantile regression-based machine learning algorithm to quantify uncertainties, which significantly enlarged the feasibility region of the control problem. </li>
+                <li style="font-size: 20px;"> Developed a WEC model through black-box <b>system identification</b> using historical input-output data. </li>
+                <li style="font-size: 20px;"> Designed a linear optimal controller using <b>quadratic programming (QP)</b> to maximize wave energy under uncertainties, and validated its effectiveness through wave tank testing experiments. </li>
+                <li style="font-size: 20px;"> Designed a <b>quantile regression-based machine learning algorithm</b> to quantify uncertainties, which significantly enlarged the feasibility region of the control problem. </li>
             </ul>
             """, 
             unsafe_allow_html=True
