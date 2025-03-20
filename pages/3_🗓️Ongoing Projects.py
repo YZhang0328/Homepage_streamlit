@@ -26,11 +26,14 @@ else:
         cv2.imwrite(output_path, bgra)
 
         # ---- HEADER SECTION ----
-        st.title("Data Tools")
+        st.title("Data Tools for Volatility Modeling and Forecasting")
 
         # Display the image
         img_contact_form = Image.open(output_path)
         st.image(img_contact_form, caption="Page under construction", width=300)
+
+
+        st.title("Crypto Asset Allocation and Portfolio Optimization")
 
         # Display a message
         st.header("This page is under construction 😎")
