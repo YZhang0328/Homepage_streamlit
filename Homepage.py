@@ -1,6 +1,5 @@
 import requests
 import streamlit as st
-from streamlit_lottie import st_lottie
 from PIL import Image
 import cv2
 import numpy as np
@@ -43,9 +42,7 @@ bgra[:, :, 3] = mask
 cv2.imwrite("images/Yujia_Photo.png", bgra)
 
 # ---- LOAD ASSETS ----
-lottie_coding = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json")
 img_contact_form = Image.open("images/Yujia_Photo.png")
-img_lottie_animation = Image.open("images/yt_lottie_animation.png")
 
 # ---- HEADER SECTION ----
 
