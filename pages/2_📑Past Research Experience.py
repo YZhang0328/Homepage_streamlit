@@ -8,7 +8,16 @@ st.set_page_config(layout="wide")
 with st.container():
     text_column, image_column = st.columns((4, 3))
     with text_column:
-        st.subheader("I'm a strong believer in the power of math and quantitative technologies to drive innovation and solve complex problems. ")
+        st.markdown(
+            """
+            <h3><i>"Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding."</i></h3>
+            <p>– William Paul Thurston</p>
+        
+            <h3><i>"The goal is to turn data into information, and information into insight."</i></h3>
+            <p>– Carly Fiorina</p>
+            """, 
+            unsafe_allow_html=True
+        )
 
         # Use st.markdown separately
         st.markdown(
@@ -77,18 +86,10 @@ st.write("---")
 
 
 with st.container():
-    text_column, image_column = st.columns((2, 1))
+    image_column, text_column = st.columns((2, 3))
+    with image_column:
+        Image.open("images/background_picture.png")
     with text_column:
-        st.write("##")
-        st.markdown(
-            '<p style="font-size: 18px;"> I am a former postdoctoral research scientist and have served as a reviewer for several prestigious journals. Additionally, I have been invited to speak at various academic conferences. </p>',
-            unsafe_allow_html=True
-        )
-
-        # text-indent: -25px; → Moves the first line (numbered part) 25px to the left.
-        # padding-left: 25px; → Ensures the rest of the text stays aligned after the number.
-        # list-style: none; → Removes the default bullet styling since you're using custom numbering.
-        # &nbsp; → Adds spaces before the list item to align it with the text above.
         st.markdown(
             """
             <ul>
@@ -101,7 +102,5 @@ with st.container():
             """, 
             unsafe_allow_html=True
         )
-    with image_column:
-        Image.open("images/background_picture.png")
 
 
