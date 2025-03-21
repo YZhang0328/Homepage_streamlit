@@ -13,14 +13,14 @@ with st.container():
             <div style="text-align: left; font-size: 20px; font-style: italic; font-weight: bold;">
                 "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding."
             </div>
-            <div style="text-align: right; font-size: 18px; font-weight: bold;">
+            <div style="text-align: right; font-size: 18px; ">
             – William Paul Thurston
             </div>
 
             <div style="text-align: left; font-size: 20px; font-style: italic; font-weight: bold;">
                 "The goal is to turn data into information, and information into insight."
             </div>
-            <div style="text-align: right; font-size: 18px; font-weight: bold;">
+            <div style="text-align: right; font-size: 18px; ">
             – Carly Fiorina
             </div>
             """, 
@@ -54,7 +54,7 @@ with st.container():
         )
 
         st.markdown(
-            '<p style="font-size: 18px;"> During my PhD, I worked on <b>data-driven renewable energy system modelling and control</b>, where I\'ve </p>',
+            '<p style="font-size: 18px;"> During PhD, I worked on <b>data-driven renewable energy system modelling and control</b>, where I\'ve </p>',
             unsafe_allow_html=True
         )
 
