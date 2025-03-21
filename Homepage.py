@@ -118,8 +118,10 @@ with st.container():
         """,
         unsafe_allow_html=True
     )
+    
+    st.write("")
+
     st.markdown(
-        
         """
         <p style="font-size: 22px;"><b>My daily responsibilities include:</b></p>
         <ul>
