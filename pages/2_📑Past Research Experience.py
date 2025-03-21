@@ -21,41 +21,41 @@ with st.container():
 
         # Use st.markdown separately
         st.markdown(
-            '<p style="font-size: 20px;"> In most of my research, I <b>worked extensively with mathematics</b>, focusing on an algorithm called model predictive control, a powerful approach that integrates <b>optimization</b> and <b>prediction</b> to enhance decision-making in dynamic systems.  </p>',
+            '<p style="font-size: 18px;"> In most of my research, I <b>worked extensively with mathematics</b>, focusing on an algorithm called model predictive control, a powerful approach that integrates <b>optimization</b> and <b>prediction</b> to enhance decision-making in dynamic systems.  </p>',
             unsafe_allow_html=True
         )
         
         st.markdown(
-            '<p style="font-size: 20px;"> Beyond control theory, I have also gained substantial experience in <b>machine learning</b>, leveraging data-driven approaches to enhance system modeling, do prediction and classification. </p>',
+            '<p style="font-size: 18px;"> Beyond control theory, I have also gained substantial experience in <b>machine learning</b>, leveraging data-driven approaches to enhance system modeling, do prediction and classification. </p>',
             unsafe_allow_html=True
         )
 
         st.markdown(
-            '<p style="font-size: 20px;"> I have approximately one year of postdoctoral research experience, endorsed by <b>UK Research and Innovation (UKRI)</b> and the <b>Royal Society of Engineering</b>. During that time, I have served as a reviewer for prestigious journals. I was also an invited speaker for symposiums and academic conferences, where the following work was accomplished: </p>',
+            '<p style="font-size: 18px;"> I have approximately one year of postdoctoral research experience, endorsed by <b>UK Research and Innovation (UKRI)</b> and the <b>Royal Society of Engineering</b>. During that time, I have served as a reviewer for prestigious journals. I was also an invited speaker for symposiums and academic conferences, where the following work was accomplished: </p>',
             unsafe_allow_html=True
         )
 
         st.markdown(
             """
             <ul>
-                <li style="font-size: 20px;"> An optimization framework for wave energy converters (WECs) to minimize levelized cost of electricity (LCOE) via <b>mixed integer nonlinear programming (MINLP)</b> and <b>robust optimization</b>. </li>
-                <li style="font-size: 20px;"> Testing parameter sensitivity of system performance, i.e., find parameters that can enhance WEC productivity and efficiency, while reducing LCoE. </li>
+                <li style="font-size: 18px;"> An optimization framework for wave energy converters (WECs) to minimize levelized cost of electricity (LCOE) via <b>mixed integer nonlinear programming (MINLP)</b> and <b>robust optimization</b>. </li>
+                <li style="font-size: 18px;"> Testing parameter sensitivity of system performance, i.e., find parameters that can enhance WEC productivity and efficiency, while reducing LCoE. </li>
             </ul>
             """, 
             unsafe_allow_html=True
         )
 
         st.markdown(
-            '<p style="font-size: 20px;"> During my PhD, I worked on <b>data-driven renewable energy system modelling and control</b>, where I\'ve </p>',
+            '<p style="font-size: 18px;"> During my PhD, I worked on <b>data-driven renewable energy system modelling and control</b>, where I\'ve </p>',
             unsafe_allow_html=True
         )
 
         st.markdown(
             """
             <ul>
-                <li style="font-size: 20px;"> Developed a WEC model through black-box <b>system identification</b> using historical input-output data. </li>
-                <li style="font-size: 20px;"> Designed a linear optimal controller using <b>quadratic programming (QP)</b> to maximize wave energy under uncertainties, and validated its effectiveness through wave tank testing experiments. </li>
-                <li style="font-size: 20px;"> Designed a <b>quantile regression-based machine learning algorithm</b> to quantify uncertainties, which significantly enlarged the feasibility region of the control problem. </li>
+                <li style="font-size: 18px;"> Developed a WEC model through black-box <b>system identification</b> using historical input-output data. </li>
+                <li style="font-size: 18px;"> Designed a linear optimal controller using <b>quadratic programming (QP)</b> to maximize wave energy under uncertainties, and validated its effectiveness through wave tank testing experiments. </li>
+                <li style="font-size: 18px;"> Designed a <b>quantile regression-based machine learning algorithm</b> to quantify uncertainties, which significantly enlarged the feasibility region of the control problem. </li>
             </ul>
             """, 
             unsafe_allow_html=True
