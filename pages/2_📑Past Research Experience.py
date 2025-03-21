@@ -61,7 +61,7 @@ with st.container():
         st.markdown(
             """
             <ul>
-                <li style="font-size: 18px;"> Developed a WEC model through black-box <b>system identification</b> using historical input-output data. </li>
+                <li style="font-size: 18px;"> Developed a WEC model via <b>system identification</b> using historical input-output data. </li>
                 <li style="font-size: 18px;"> Designed a linear optimal controller using <b>quadratic programming (QP)</b> to maximize wave energy under uncertainties, and validated its effectiveness through wave tank testing experiments. </li>
                 <li style="font-size: 18px;"> Designed a <b>quantile regression-based machine learning algorithm</b> to quantify uncertainties, which significantly enlarged the feasibility region of the control problem. </li>
             </ul>
