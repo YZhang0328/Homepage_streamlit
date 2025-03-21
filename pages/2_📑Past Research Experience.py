@@ -10,11 +10,19 @@ with st.container():
     with text_column:
         st.markdown(
             """
-            <h3><i>"Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding." </i>
-            <span style="font-size: 18px;">– William Paul Thurston</span></h3>
-        
-            <h3><i>"The goal is to turn data into information, and information into insight." </i>
-            <span style="font-size: 18px;">– Carly Fiorina</span></h3>
+            <div style="text-align: left; font-size: 20px; font-style: italic;">
+                "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding."
+            </div>
+            <div style="text-align: right; font-size: 18px; font-weight: bold;">
+            – William Paul Thurston
+            </div>
+
+            <div style="text-align: left; font-size: 20px; font-style: italic;">
+                "The goal is to turn data into information, and information into insight."
+            </div>
+            <div style="text-align: right; font-size: 18px; font-weight: bold;">
+            – Carly Fiorina
+            </div>
             """, 
             unsafe_allow_html=True
         )
