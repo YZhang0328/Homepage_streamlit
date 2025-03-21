@@ -122,7 +122,7 @@ with st.container():
         <ul>
             <li style="font-size: 20px;">Working with Excel and Python, especially Pandas, to analyze and process large energy market datasets—including demand, supply, plant, region, and interflow data. I develop models that optimize electricity distribution across various sources such as gas, coal, solar, wind, hydro, and interconnectors. These models generate price forecasts and market trends to support financial decision-making in energy portfolios.</li>
             <li style="font-size: 20px;">Adding features to market models, identifying input and modeling anomalies to ensure robustness. </li>
-            <li style="font-size: 20px;">Developing platform code; ensuring reliability of new features through testing, including unit, integration, and behavioral tests. </li>
+            <li style="font-size: 20px;">Developing platform code; ensuring reliability of new features through testing, including unit, integration, behavioral, and regression tests. </li>
             <li style="font-size: 20px;">Running scenario analyses to evaluate the impact of technological advancements, policy shifts, and economic trends on energy prices.</li>
             <li style="font-size: 20px;">Continuously enhancing models and optimizing platform data structures, as I'm always seeking more efficient solutions: "There has to be a better way".</li>
         </ul>
