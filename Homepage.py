@@ -74,6 +74,9 @@ with st.container():
         # Regular st.write for text
         file_path = 'CV/CV_YUJIA.pdf'
 
+
+        st.write("Get in touch with me: yujia.zhang.uom@gmail.com")
+        
         # Create a markdown link
         st.write("[Learn more about me>](https://www.linkedin.com/in/yujia-zhang-94417a295/)")
         with open(file_path, "rb") as pdf_file:
@@ -83,8 +86,6 @@ with st.container():
                 file_name="CV_YUJIA.pdf",
                 mime="CV_for_application/pdf"
             )
-
-        st.write("Get in touch with me: yujia.zhang.uom@gmail.com")
 
 # ---- WHAT I DO ----
 with st.container():
