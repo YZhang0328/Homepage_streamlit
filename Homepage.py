@@ -107,16 +107,19 @@ with st.container():
 
     gif_path = "images/Aurora_refined.gif"
     gif_base64 = get_base64_of_file(gif_path)
+    
 
     st.markdown(
         f"""
         <div style="overflow-x: auto; white-space: nowrap; width: 100%;">
             <img src="data:image/gif;base64,{gif_base64}" alt="GIF" style="width: 750px; height: auto; display: block; margin: 0 auto;">
         </div>
+
         """,
         unsafe_allow_html=True
     )
     st.markdown(
+        
         """
         <p style="font-size: 22px;"><b>My daily responsibilities include:</b></p>
         <ul>
