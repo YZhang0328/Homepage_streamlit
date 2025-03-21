@@ -105,13 +105,13 @@ with st.container():
         with open(file_path, "rb") as file:
             return base64.b64encode(file.read()).decode()
 
-    gif_path = "images/Aurora_scheme.gif"
+    gif_path = "images/Aurora_refined.gif"
     gif_base64 = get_base64_of_file(gif_path)
 
     st.markdown(
         f"""
         <div style="overflow-x: auto; white-space: nowrap; width: 100%;">
-            <img src="data:image/gif;base64,{gif_base64}" alt="GIF" style="width: 650px; height: auto; display: block; margin: 0 auto;">
+            <img src="data:image/gif;base64,{gif_base64}" alt="GIF" style="width: 750px; height: auto; display: block; margin: 0 auto;">
         </div>
         """,
         unsafe_allow_html=True
@@ -130,7 +130,7 @@ with st.container():
         unsafe_allow_html=True
     )
     st.markdown(
-        '<p style="font-size: 22px;"> If this sounds interesting to you, feel free to contact me at the end of the page, and stay tuned for more content!  </p>',
+        '<p style="font-size: 22px;"> If this sounds interesting to you, feel free to contact me, and stay tuned for more content!  </p>',
         unsafe_allow_html=True
     )
 
