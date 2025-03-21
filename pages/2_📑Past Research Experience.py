@@ -35,6 +35,12 @@ with st.container():
             unsafe_allow_html=True
         )
 
+    with image_column:
+        st.image("images/background_picture.png")
+
+
+with st.container():
+        
         st.markdown(
             """
             <ul>
@@ -44,12 +50,7 @@ with st.container():
             """, 
             unsafe_allow_html=True
         )
-
-    with image_column:
-        st.image("images/background_picture.png")
-        
-
-with st.container():
+                
         st.markdown(
             '<p style="font-size: 18px;"> During my PhD, I worked on <b>data-driven renewable energy system modelling and control</b>, where I\'ve </p>',
             unsafe_allow_html=True
