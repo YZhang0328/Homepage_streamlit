@@ -173,5 +173,5 @@ with st.container():
 
 #             st.write("Or send to the email address: yujia.zhang.uom@gmail.com")
 
-    with right_column:
-        st.empty()
+#    with right_column:
+#        st.empty()
