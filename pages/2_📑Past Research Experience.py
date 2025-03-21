@@ -10,14 +10,14 @@ with st.container():
     with text_column:
         st.markdown(
             """
-            <div style="text-align: left; font-size: 20px; font-style: italic;">
+            <div style="text-align: left; font-size: 20px; font-style: italic; font-weight: bold;">
                 "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding."
             </div>
             <div style="text-align: right; font-size: 18px; font-weight: bold;">
             – William Paul Thurston
             </div>
 
-            <div style="text-align: left; font-size: 20px; font-style: italic;">
+            <div style="text-align: left; font-size: 20px; font-style: italic; font-weight: bold;">
                 "The goal is to turn data into information, and information into insight."
             </div>
             <div style="text-align: right; font-size: 18px; font-weight: bold;">
