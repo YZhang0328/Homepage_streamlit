@@ -84,6 +84,8 @@ with st.container():
                 mime="CV_for_application/pdf"
             )
 
+        st.write("Get in touch with me: yujia.zhang.uom@gmail.com")
+
 # ---- WHAT I DO ----
 with st.container():
     st.write("---")
@@ -132,43 +134,43 @@ with st.container():
     )
 
 
-# ---- CONTACT ----
-with st.container():
-    st.write("---")
-    st.header("Get In Touch With Me!")
-    st.write("##")
+# # ---- CONTACT ----
+# with st.container():
+#     st.write("---")
+#     st.header("Get In Touch With Me!")
+#     st.write("##")
 
-    left_column, right_column = st.columns([0.9, 0.1])
+#     left_column, right_column = st.columns([0.9, 0.1])
 
-    with left_column:
-        with st.form(key="contact_form"):
-            name = st.text_input("Your Name")
-            email = st.text_input("Your Email")
-            message = st.text_area("Your Message")
+#     with left_column:
+#         with st.form(key="contact_form"):
+#             name = st.text_input("Your Name")
+#             email = st.text_input("Your Email")
+#             message = st.text_area("Your Message")
 
-            submit_button = st.form_submit_button("Send")
+#             submit_button = st.form_submit_button("Send")
 
-            if submit_button:
-                if name and email and message:
-                    submit_url = "https://formsubmit.co/yujia.zhang.uom@gmail.com"
-                    payload = {
-                        "name": name,
-                        "email": email,
-                        "message": message,
-                        "_replyto": email,  
-                        "_captcha": "false",
-                        "_next": "thank_you.html"
-                    }
-                    response = requests.post(submit_url, data=payload)
+#             if submit_button:
+#                 if name and email and message:
+#                     submit_url = "https://formsubmit.co/yujia.zhang.uom@gmail.com"
+#                     payload = {
+#                         "name": name,
+#                         "email": email,
+#                         "message": message,
+#                         "_replyto": email,  
+#                         "_captcha": "false",
+#                         "_next": "thank_you.html"
+#                     }
+#                     response = requests.post(submit_url, data=payload)
 
-                    if response.status_code == 200:
-                        st.success("Message sent successfully!")
-                    else:
-                        st.error("Something went wrong. Please try again.")
-                else:
-                    st.warning("Please fill in all fields before submitting.")
+#                     if response.status_code == 200:
+#                         st.success("Message sent successfully!")
+#                     else:
+#                         st.error("Something went wrong. Please try again.")
+#                 else:
+#                     st.warning("Please fill in all fields before submitting.")
 
-            st.write("Or send to the email address: yujia.zhang.uom@gmail.com")
+#             st.write("Or send to the email address: yujia.zhang.uom@gmail.com")
 
     with right_column:
         st.empty()
