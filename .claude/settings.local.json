@@ -17,7 +17,9 @@
       "Bash(npx tsc:*)",
       "Bash(curl:*)",
       "Skill(schedule)",
-      "Bash(node *)"
+      "Bash(node *)",
+      "WebFetch(domain:images.unsplash.com)",
+      "WebFetch(domain:unsplash.com)"
     ]
   }
 }
