@@ -46,6 +46,9 @@ const hubDefinitions: TopicHubDefinition[] = [
       "stablecoin-treasury-management-2026",
       "revolut-us-bank-charter",
       "agentic-commerce-liability-stack-2026",
+      "coinbase-checkout-stablecoin-acceptance-2026",
+      "mastercard-yellow-card-stablecoin-corridors-2026",
+      "adyen-sap-unified-payment-stack-2026",
     ],
     keyQuestions: [
       "Who owns the custody and routing layers around stablecoins?",
@@ -76,6 +79,8 @@ const hubDefinitions: TopicHubDefinition[] = [
       "microsoft-frontier-suite",
       "openai-promptfoo-evals-infrastructure",
       "anthropic-enterprise-dominance-2026",
+      "openai-codex-safety-controls-2026",
+      "gamedevbench-multimodal-agents-2026",
     ],
     keyQuestions: [
       "What separates a helpful assistant from a production agent?",
@@ -109,6 +114,9 @@ const hubDefinitions: TopicHubDefinition[] = [
       "pjm-capacity-prices-data-centers-2026",
       "energy-islands-shadow-grid-2026",
       "oil-supply-shock-math",
+      "pjm-shared-reliability-market-design-2026",
+      "pjm-large-load-curtailment-strategy-2026",
+      "ferc-summer-reliability-large-load-2026",
     ],
     keyQuestions: [
       "Why does capacity pricing matter more than spot pricing for AI load?",

@@ -36,6 +36,7 @@ export interface NewsStory {
   image: string;
   imageAlt: string;
   imageClassName?: string;
+  imageCredit?: string;
   paragraphs: string[];
   modelView: string;
   bottomLine: string;
@@ -70,6 +71,17 @@ const defaultAudience =
   "Investors, operators, energy modellers, and technically literate readers who want institutional-quality analysis at the intersection of AI, energy, and financial markets.";
 const defaultTone =
   "Bloomberg-style lead, professional analytical body, mathematically literate framing, and a concise strategic close.";
+
+function storyDateToTimestamp(dateLabel: string) {
+  const parsed = Date.parse(dateLabel);
+  return Number.isNaN(parsed) ? 0 : parsed;
+}
+
+function sortStoriesByDateDesc(stories: NewsStory[]) {
+  return [...stories].sort(
+    (left, right) => storyDateToTimestamp(right.date) - storyDateToTimestamp(left.date)
+  );
+}
 
 const monthNames = [
   "january",
@@ -176,13 +188,12 @@ export function findActiveEventBySlug(
 
 export const aiFinanceEvents: EventListing[] = [
   {
-    title:
-      "AI Tinkerers London - 8th June featuring fireside chat with Winston Weinberg, CEO of Harvey",
+    title: "AI Tinkerers London - 8th June featuring fireside chat",
     date: "June 8, 2026",
     venue: "Address shared on RSVP acceptance, London",
     price: "Free",
     description:
-      "Hands-on AI builder meetup with a fireside chat featuring Harvey CEO Winston Weinberg plus technical demos from London teams. High signal for engineers who want practical discussion rather than vendor decks.",
+      "AI Tinkerers London - 8th June featuring fireside chat plus technical demos from London teams. High signal for engineers who want practical discussion rather than vendor decks.",
     link: "https://london.aitinkerers.org/p/ai-tinkerers-london-8th-june-featuring-fireside-chat-with-winston-weinberg-ceo-of-harvey",
     source: "AI Tinkerers London",
     type: "Engineering Meetup",
@@ -263,26 +274,26 @@ export const desks: NewsDesk[] = [
     id: "finance",
     label: "Financial Infrastructure",
     intro:
-      "The finance desk now runs on a layered story arc: the stablecoin stack explains who owns the infrastructure, the GENIUS Act explains the regulation, bank charters explain who owns the balance sheet, treasury explains who uses the rails, and agentic commerce explains where payments go next.",
+      "The finance desk now runs from regulation into implementation. The policy perimeter is clearer, and the higher-signal May and June launches are about merchant acceptance, corridor routing, embedded reconciliation, and the payment permissions that AI agents will eventually need.",
     feature: {
       label: "Financial Infrastructure",
       title:
-        "Stablecoins are settled law  - now the fight is over stack ownership, treasury use, and payment control.",
+        "The stablecoin story has moved out of policy debate and into merchant, treasury, and ERP plumbing.",
       summary:
-        "The GENIUS Act resolved regulatory ambiguity. Visa, Mastercard, BitGo, SoFi, and major banks are all positioning for custody, liquidity routing, treasury workflows, and agent-ready payment infrastructure. The real margin is not in minting stablecoins  - it is in the connective tissue around them.",
+        "Recent launches from Coinbase, Mastercard, Yellow Card, SAP, and Adyen all point to the same conclusion. The hard part is no longer token issuance. It is turning stablecoins and payments into a controllable enterprise workflow that fits existing checkout, treasury, and reconciliation systems.",
       tags: [
         "stablecoin infrastructure",
-        "GENIUS Act",
+        "merchant acceptance",
         "payment rails",
-        "treasury management",
-        "agentic commerce",
+        "treasury workflows",
+        "embedded reconciliation",
       ],
       image:
         "https://images.unsplash.com/photo-1642605185249-377b3d935f9c?w=1080&q=80&auto=format&fit=crop",
       imageAlt: "Modern bank towers in a city skyline",
       imageClassName: "object-center",
     },
-    stories: [
+    stories: sortStoriesByDateDesc([
       {
         slug: "stablecoin-stack-race-2026",
         kicker: "Stablecoins",
@@ -489,8 +500,8 @@ export const desks: NewsDesk[] = [
         dek:
           "When AI agents buy on behalf of users, the hard question is no longer whether the payment cleared. It is who authorized it, who verified it, and who eats the loss if the agent misfires.",
         image:
-          "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1080&q=80&auto=format&fit=crop",
-        imageAlt: "Digital payment interface and transaction workflow",
+          "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "Developer and payment workflow interfaces on connected screens",
         imageClassName: "object-center",
         paragraphs: [
           "Mastercard's Agent Suite and Agent Pay made a clear point in 2026: agentic commerce is no longer a thought experiment. The network is already building the tooling for agents to discover products, initiate transactions, and complete purchases under explicit user control. That shifts the payment problem from 'can an agent transact' to 'can the ecosystem prove what the agent was allowed to do'. The liability question becomes central as soon as the transaction moves from demo to production.",
@@ -532,7 +543,149 @@ export const desks: NewsDesk[] = [
           ],
         },
       },
-    ],
+      {
+        slug: "coinbase-checkout-stablecoin-acceptance-2026",
+        kicker: "Merchant Acceptance",
+        date: "June 2, 2026",
+        headline:
+          "Checkout.com turns stablecoin acceptance into a PSP feature",
+        dek:
+          "Coinbase and Checkout.com are making USDC and USDT acceptance available through an existing enterprise PSP stack. That shifts stablecoins from a separate crypto integration into a payments-operations decision.",
+        image:
+          "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "Digital payment checkout flow on a mobile device",
+        imageClassName: "object-center",
+        paragraphs: [
+          "The Coinbase-Checkout.com integration is a three-layer stack, and the commercial insight lives in understanding which layer does what. The bottom layer is Base, Coinbase's Ethereum Layer 2 network: USDC or USDT transfers execute as EVM transactions, settle with finality in approximately two seconds, and are cryptographically irreversible once confirmed. The middle layer is Coinbase Commerce's acceptance SDK, which abstracts on-chain mechanics into a payment-request-and-verify flow  - the merchant's system calls an API endpoint, gets back a payment address, polls for confirmation, and receives a webhook when the transaction settles. The top layer is Checkout.com's PSP integration, which wraps that SDK into the same merchant API surface used for card and bank transfer acceptance. A merchant already integrated with Checkout.com does not see the on-chain layer at all.",
+          "The USD settlement design is the engineering decision that determines whether enterprise finance teams approve the integration. An enterprise merchant cannot carry USDC as a balance-sheet asset without triggering accounting and treasury complexity that most finance teams will reject in a normal payments discussion. The integration solves this by running an automated off-ramp: as soon as the on-chain transfer confirms, Checkout.com's liquidity management system converts USDC to USD at a real-time rate, nets the conversion against the daily settlement batch, and delivers USD to the merchant's bank on the same settlement cadence as card transactions. From the merchant's accounting perspective, the receivable is always USD  - the on-chain leg is an infrastructure detail, not a balance-sheet event.",
+          "The refund mechanism is where most stablecoin integrations fail in practice, and the design here matters. A stablecoin transfer is cryptographically irreversible  - the blockchain cannot undo a confirmed transaction. Refunds must be new outbound transfers from the merchant to the original sender address. For B2C payments, this requires the merchant to hold a stablecoin operational balance specifically for refunds, which reintroduces the treasury complexity the USD settlement process was designed to avoid. The likely design is a hybrid: refunds are processed as USD credits through Checkout.com's existing refund rails, with the on-chain leg settled internally through Coinbase's liquidity book. That keeps refund accounting in USD while using Coinbase's balance sheet to absorb the timing mismatch.",
+          "Know-your-transaction compliance is the other integration point that determines enterprise adoption velocity. Card networks have decades of transaction monitoring built into their authorisation flow; stablecoin networks do not have an equivalent at the protocol level. Coinbase addresses this through its on-chain analytics layer  - the same infrastructure used for Exchange and Institutional custody  - which screens every inbound payment address against sanctions lists, flags addresses associated with mixer protocols or high-risk DeFi contracts, and can trigger a hold before the merchant's order is confirmed. That screening happens at the Coinbase Commerce layer, not at the PSP layer. Checkout.com does not need to build its own blockchain analytics capability: the compliance boundary sits between the two providers, with each contributing its core competency.",
+          "The market structure consequence is that the PSP layer becomes the natural aggregator of stablecoin acceptance capacity. A merchant accepting stablecoins through Checkout.com outsources custody, off-ramp, refund settlement, and KYT to Coinbase's infrastructure, while outsourcing checkout UX, fraud rules, and merchant reconciliation to Checkout.com's. Neither party manages the full stack; both contribute the layer where they have existing economies of scale. That division of labour is why PSP-native stablecoin acceptance is more likely to reach mass adoption than wallet-native acceptance, which requires merchants to integrate independently with custody, compliance, and checkout infrastructure most of them do not have the engineering bandwidth to manage.",
+          "The scale effect on adoption is worth quantifying. Checkout.com serves more than 1,000 enterprise merchants. If 10% activate stablecoin acceptance in the first twelve months  - a conservative assumption given that activation is a configuration choice rather than a new integration project  - that is over 100 large merchants adding stablecoin as a payment method simultaneously. That creates a step-change in wallet-holder demand signal: the case for carrying a USDC balance becomes more compelling when a meaningful fraction of major e-commerce merchants accept it at checkout. Network effects in payment acceptance are driven by simultaneous growth on both sides of the market; the PSP distribution model is the most credible path to achieving that simultaneity.",
+        ],
+        modelView:
+          "Stablecoin acceptance value = reachable wallet demand x merchant activation rate x settlement familiarity - operational friction. The PSP wins when it pushes the friction term close to zero.",
+        bottomLine:
+          "The first enterprise stablecoin winner will be the PSP that turns crypto acceptance into a checkbox instead of a rebuild.",
+        packet: {
+          audience: defaultAudience,
+          briefing:
+            "Write a 1200-1400 word analysis of Coinbase and Checkout.com launching enterprise stablecoin acceptance. Explain why the PSP layer matters more than the token itself, how activation changes when merchants can still settle in USD, and what this says about the first real institutional adoption wave. Include one compact framework for acceptance value.",
+          targetKeyword: "Checkout.com Coinbase stablecoin acceptance 2026",
+          tone: defaultTone,
+          targetWordCount: 1300,
+          backlinkPath: "/news/finance/coinbase-checkout-stablecoin-acceptance-2026",
+          publicationTargets,
+          sourceAnchors: [
+            {
+              label: "Coinbase powers stablecoin acceptance for Checkout.com merchants",
+              url: "https://www.coinbase.com/blog/coinbase-powers-stablecoin-acceptance-for-checkoutcoms-network-of-enterprise-merchants",
+            },
+            {
+              label: "Coinbase Payments acceptance overview",
+              url: "https://docs.cdp.coinbase.com/payments/payment-acceptance/overview",
+            },
+          ],
+          keyPoints: [
+            "Why the payment service provider layer is the real control point for merchant stablecoin adoption",
+            "How checkout activation depends on preserving existing reconciliation and settlement workflows",
+            "Why enterprise adoption starts with operations simplification rather than crypto enthusiasm",
+          ],
+        },
+      },
+      {
+        slug: "mastercard-yellow-card-stablecoin-corridors-2026",
+        kicker: "Cross-Border Rails",
+        date: "May 7, 2026",
+        headline:
+          "Mastercard and Yellow Card are productising stablecoin corridors",
+        dek:
+          "Mastercard's partnership with Yellow Card targets remittances, B2B settlement, loyalty, and treasury. The important move is not generic blockchain support. It is corridor-specific infrastructure with local compliance attached.",
+        image:
+          "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "Global payments network visualized across a world map",
+        imageClassName: "object-center",
+        paragraphs: [
+          "Mastercard's contribution to this partnership operates through the Multi-Token Network, Mastercard's permissioned blockchain infrastructure expanded across EMEA corridors in 2025. MTN provides the settlement and token lifecycle management layer: it issues, transfers, and redeems tokenised representations of fiat-backed assets across participating financial institutions, with Mastercard's network settlement logic providing finality guarantees. Yellow Card provides the local operating layer: licensed stablecoin infrastructure with banking connectivity across more than 20 African markets, a network of local liquidity providers for on-ramp and off-ramp conversion, and regulatory relationships with central banks where MTN alone does not have direct operating access. The partnership is the combination of a global settlement network with local operating infrastructure in markets where neither party can serve the full stack independently.",
+          "The FX and liquidity problem in African corridor payments deserves more technical attention than it typically receives. A USDC transfer from a UK sender to a Nigerian recipient looks simple on the blockchain: tokens move from one address to another in seconds. The hard part is what happens at each end. On the UK side, the sender must convert GBP to USDC, requiring an on-ramp with adequate GBP liquidity and favourable spread economics. On the Nigerian side, the recipient needs NGN, requiring an off-ramp that can convert USDC at a rate acceptable to the recipient and clear within a window the recipient's institution supports. Yellow Card acts as the market maker: it quotes a spread, provides liquidity at each end, and manages currency risk on its own balance sheet during the settlement window. NGN liquidity is segmented between official and parallel exchange rates, and the corridor's economics depend critically on which rate a provider can offer.",
+          "This corridor model differs from SWIFT GPI on the same routes in ways that matter operationally. SWIFT GPI reduced international payment latency from days to hours by adding tracking and settlement timing guarantees on top of the correspondent banking chain. It did not reduce the number of intermediaries or the FX conversion costs  - those are structural features of the correspondent model, not latency problems. A stablecoin corridor replaces the correspondent chain with a single token transfer and moves FX conversion to the endpoints, reducing the number of institutions taking margin and shortening settlement to near-real-time. The trade-off is that stablecoin corridors require functioning on-ramp and off-ramp infrastructure at both endpoints  - a dependency SWIFT does not have, since it operates over pre-existing bank relationships. Building those endpoints is Yellow Card's core capability.",
+          "The B2B settlement use case has different economics than remittances, and the partnership's explicit inclusion of both signals that Yellow Card's infrastructure is designed to handle commercial volumes. A remittance of $200 needs an efficient on-ramp, fast transfer, and reliable off-ramp; the margin opportunity per transaction is small, so volume drives economics. A B2B settlement of $50,000 for a trade finance payment has different requirements: the buyer and seller need settlement assurance, the currency risk window matters when the amount is large, and compliance documentation requirements are stricter. Yellow Card's banking relationships and multi-currency account infrastructure at both corridor ends are what make the higher-value B2B case viable; a pure crypto wallet solution lacks the bank account connectivity that most corporate treasuries require for settlement documentation.",
+          "The digital loyalty use case will scale fastest but receives the least analysis. Loyalty point issuance, redemption, and exchange across markets is a payments problem that existing rails solve poorly  - each programme runs a closed loop, points expire in local economies, and programme operators cannot easily interoperate across borders. A stablecoin representation of loyalty value that settles on MTN's infrastructure and redeems at Yellow Card's local off-ramp points creates a programmable cross-border loyalty asset without requiring each programme operator to build corridor infrastructure independently. Loyalty liability is typically valued at a discount to face value on programme operators' balance sheets, so the ability to monetise or transfer that liability more efficiently has direct P&L implications.",
+          "The template value of this partnership is its most important signal. A workable corridor requires a global settlement layer with network effects (what Mastercard provides), a licensed local operator with banking connectivity (what Yellow Card provides), and a defined set of use cases with clear economics. That three-component template applies to every emerging-market corridor where traditional correspondent banking is expensive or slow. Mastercard cannot replicate Yellow Card's local infrastructure in every market; it can replicate the partnership model with locally licensed operators in each new corridor. The competitive question for the next three to five years is which stablecoin-native operators in each region can build the Yellow Card profile  - licensed, banked, multi-currency  - before either Mastercard or a direct competitor locks up those relationships.",
+        ],
+        modelView:
+          "Corridor value = payment volume x cost saved per transfer x activation rate x compliance reliability. Stablecoins scale when all four variables work together inside a specific corridor.",
+        bottomLine:
+          "Cross-border stablecoin infrastructure becomes investable when it is built corridor by corridor, not slogan by slogan.",
+        packet: {
+          audience: defaultAudience,
+          briefing:
+            "Write a 1200-1400 word analysis of Mastercard and Yellow Card building stablecoin payment corridors. Explain why corridor-level infrastructure matters more than chain rhetoric, how the four target use cases differ operationally, and why local compliance is the real scaling constraint. Include one concise corridor-value model.",
+          targetKeyword: "Mastercard Yellow Card stablecoin corridors 2026",
+          tone: defaultTone,
+          targetWordCount: 1300,
+          backlinkPath: "/news/finance/mastercard-yellow-card-stablecoin-corridors-2026",
+          publicationTargets,
+          sourceAnchors: [
+            {
+              label: "Mastercard and Yellow Card partnership",
+              url: "https://www.mastercard.com/news/eemea/en/newsroom/press-releases/en/2026/may/mastercard-and-yellow-card-partner-to-unlock-stablecoin-payment-innovation-across-eemea/",
+            },
+          ],
+          keyPoints: [
+            "Why stablecoin adoption in emerging markets is a corridor design problem rather than a generic blockchain problem",
+            "How remittances, B2B settlement, loyalty, and treasury each stress a different part of the payments stack",
+            "Why local compliance and liquidity determine whether a corridor becomes a product",
+          ],
+        },
+      },
+      {
+        slug: "adyen-sap-unified-payment-stack-2026",
+        kicker: "Enterprise Integration",
+        date: "May 13, 2026",
+        headline:
+          "SAP is pulling payments closer to the enterprise ledger",
+        dek:
+          "Adyen's integration with SAP Unified Payment is a reminder that the next payments battle is not only at checkout. It is inside reconciliation, data consistency, and who owns the financial system of record.",
+        image:
+          "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "Enterprise operations team reviewing dashboards and payment data",
+        imageClassName: "object-center",
+        paragraphs: [
+          "SAP Unified Payment is architecturally an abstraction layer over SAP Commerce Cloud's order management system and the financial document flows in S/4HANA. It intercepts payment events at checkout, routes them to configured PSPs through a standardised adapter interface, receives status callbacks, and writes the resulting financial documents  - revenue recognition entries, tax postings, receivables  - directly into the S/4HANA general ledger without a batch import step. Adyen's integration implements that adapter interface natively, which means every authorisation, capture, refund, and chargeback event from Adyen's acquiring network maps to a corresponding SAP financial document in real time. The technical elimination of the batch import is not a minor convenience  - it is the mechanism that closes the reconciliation gap between what the payment system recorded and what the ledger shows.",
+          "The reconciliation gap is where most enterprise payment operations lose time and create risk. In a typical multi-system architecture, the payment gateway records a transaction, a middleware layer batches and transforms those records overnight, and the ERP imports and posts them the following morning. Any discrepancy between what the gateway recorded and what the ERP posted  - due to transformation errors, timing cutoffs, or currency rounding at different layers  - creates an exception requiring manual investigation. At scale, a merchant processing 100,000 transactions per day with a 0.1% exception rate is managing 100 manual investigations daily. Embedded payment infrastructure that writes gateway events directly to the ledger eliminates the transformation layer and therefore eliminates the class of exception that transformation creates.",
+          "The data model unification is the less-visible but strategically significant consequence. When payment events and financial document events share an SAP data model, a merchant can run queries across both layers without a join across systems: which products generated chargebacks in which geographies last quarter; which payment methods correlate with higher return rates; which customer segments have the highest lifetime payment reliability. In a separated architecture, those queries require exporting data from two systems, aligning on a common identifier, and managing schema divergence between the payment platform's data model and the ERP's. SAP Unified Payment's native integration makes those analytics a standard report rather than a data engineering project.",
+          "The iDoc-versus-API question shapes implementation cost for most SAP customers. Traditional SAP payment integration used iDocs  - SAP's proprietary data exchange format  - which required mapping tables, batch processing, and custom ABAP development to connect non-SAP systems. SAP Unified Payment uses modern REST APIs and standardised event schemas, which reduces the integration effort from months of custom development to days of configuration in the SAP Business Technology Platform integration suite. That reduction in integration cost is what makes the Adyen-SAP combination commercially significant for SAP's installed base: the barrier to switching from a legacy gateway arrangement to the embedded model has dropped materially.",
+          "The buyer profile shift is the most underappreciated consequence. When payment capability is delivered through SAP, the buying decision involves not only the digital commerce team but also the CFO organisation, the group controller, and enterprise architecture. Those stakeholders care about different things: uptime and SLA for the CFO, audit trail completeness for the controller, vendor consolidation for enterprise architecture. A PSP that answers all three requirements in one conversation wins a different, larger, and more durable contract than a gateway that wins only the digital commerce team. Adyen's SAP partnership is an investment in accessing that wider buying committee rather than competing on checkout performance metrics alone.",
+          "The strategic consequence for future payment innovation is what the market is underpricing. An enterprise merchant with embedded payment infrastructure in SAP does not need a new infrastructure project every time a new payment method appears. USDC acceptance, account-to-account payments, buy-now-pay-later integrations, and agent-triggered purchases can all be added as configuration changes to the existing SAP payment hub, provided the PSP supports them through the same adapter interface. That configurability converts each new payment method from a development project with its own security review and testing cycle into a policy decision. Merchants with embedded infrastructure can activate new rails in weeks; merchants with point-to-point integrations will take months. The speed advantage compounds over time into competitive separation.",
+        ],
+        modelView:
+          "Enterprise payment value = conversion + authorization quality + reconciliation speed + ledger consistency. The last two terms are where embedded payment stacks compound their advantage.",
+        bottomLine:
+          "The payment stack that controls reconciliation and ledger flow owns more of the enterprise than the stack that only wins checkout.",
+        packet: {
+          audience: defaultAudience,
+          briefing:
+            "Write a 1200-1400 word analysis of Adyen and SAP Unified Payment. Explain why enterprise payments are moving deeper into the ERP layer, how reconciliation and ledger consistency create platform power, and why new rails will only scale if they fit existing finance controls. Include one compact model for enterprise payment value.",
+          targetKeyword: "Adyen SAP Unified Payment 2026",
+          tone: defaultTone,
+          targetWordCount: 1300,
+          backlinkPath: "/news/finance/adyen-sap-unified-payment-stack-2026",
+          publicationTargets,
+          sourceAnchors: [
+            {
+              label: "Adyen collaboration with SAP Unified Payment",
+              url: "https://www.adyen.com/press-and-media/sap-commerce-cloud",
+            },
+          ],
+          keyPoints: [
+            "Why the financial system of record matters as much as checkout UX in enterprise payments",
+            "How embedded reconciliation reduces operational drag and manual close complexity",
+            "Why future payment rails must fit ERP controls to become material at scale",
+          ],
+        },
+      },
+    ]),
   },
 
   //  AI News 
@@ -540,18 +693,18 @@ export const desks: NewsDesk[] = [
     id: "ai",
     label: "AI News",
     intro:
-      "MCP has crossed 97 million installs in 16 months  - faster than React reached comparable scale. The standard for agent-to-tool connectivity is settled. Meanwhile Anthropic holds 40% of enterprise LLM spend, Claude Code is in production, and every major AI vendor is competing on governance and deployment trust, not just benchmark scores.",
+      "The AI desk is now less about one-off model launches and more about operating constraints. The highest-signal releases are about managed execution, approval boundaries, and evals that show where multimodal agents still fail under realistic task structure.",
     feature: {
       label: "AI News",
       title:
-        "The agent connectivity standard has been decided  - and 97 million installs later, the infrastructure race begins.",
+        "Agent systems are getting more usable because the control plane is finally catching up.",
       summary:
-        "MCP's adoption curve  - from Anthropic launch in November 2024 to 97 million installs by March 2026, with every major AI vendor now backing it through the Linux Foundation  - marks the end of the fragmented integration era for AI agents. The next competition is not over the protocol. It is over who builds the most valuable managed services on top of it.",
+        "OpenAI's latest Codex safety write-up, Google's managed-agent push at I/O, and new evaluation work such as GameDevBench all point in the same direction. Production agents improve when runtime controls, tool interfaces, and hard benchmarks advance together instead of in isolation.",
       tags: [
-        "MCP standard",
-        "agent connectivity",
-        "enterprise AI",
-        "Anthropic market share",
+        "managed agents",
+        "runtime controls",
+        "multimodal evals",
+        "developer infrastructure",
         "production agents",
       ],
       image:
@@ -559,7 +712,7 @@ export const desks: NewsDesk[] = [
       imageAlt: "Blue-lit server racks in a data centre",
       imageClassName: "object-center",
     },
-    stories: [
+    stories: sortStoriesByDateDesc([
       {
         slug: "mcp-97-million-installs-standard",
         kicker: "Agent Standards",
@@ -798,7 +951,103 @@ export const desks: NewsDesk[] = [
           ],
         },
       },
-    ],
+      {
+        slug: "openai-codex-safety-controls-2026",
+        kicker: "Agent Governance",
+        date: "May 8, 2026",
+        headline:
+          "OpenAI is treating coding agents like governed infrastructure",
+        dek:
+          "OpenAI's Codex safety notes are notable because they focus on approvals, network policy, and logs rather than raw coding benchmarks. That is what production agent deployment looks like when risk is taken seriously.",
+        image:
+          "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "Software developer workstation with security-themed screens",
+        imageClassName: "object-center",
+        paragraphs: [
+          "OpenAI's Codex safety architecture is built around three layers that matter in sequence: process isolation, network policy, and approval routing. The execution environment is a Windows sandbox using App Container isolation  - not a Linux container  - which is a deliberate choice. App Container restricts filesystem access, inter-process communication, and network connectivity at the OS level without requiring a separate hypervisor. Every tool call Codex makes  - git, npm, a compiler, a test runner  - runs inside that boundary. The default-deny network posture allowlists package registries and VCS hosts and blocks everything else. That default is what makes autonomous execution safe to enable in the first place.",
+          "The approval routing model is where the practical enterprise architecture lives. Codex classifies each planned action into a risk tier before executing it. Read-only operations  - file reads, test runs, local builds  - run automatically. Write operations that cross repository boundaries  - git push, external API calls, file writes outside the working directory  - trigger asynchronous approval requests. Operations with production or security implications  - credential access, schema modifications, infrastructure changes  - require synchronous human approval before the step proceeds. That three-tier model mirrors the coarse-to-fine permission structure in any well-designed RBAC system. What is novel is applying it dynamically to agent action sequences rather than to static resource access.",
+          "Agent-native telemetry is the capability that makes this auditable at scale. Codex emits structured trace events at each step: tool call name, arguments, return values, latency, and the decision rationale logged before invoking the tool. Those events follow an OpenTelemetry-compatible format, which means they can be ingested by any observability stack an enterprise already runs. The critical invariant is that the trace is written before the action executes, not after  - so the log cannot be reconstructed post-hoc to explain an unexpected outcome. That write-ahead logging pattern is borrowed directly from database transaction systems. It is the correct pattern for any stateful agent that needs to explain itself to an auditor.",
+          "The enterprise value implication is quantitative. An autonomous coding agent that completes 65% of assigned tasks but generates one critical incident per month in a high-stakes codebase does not have positive expected value. The bounded-risk model attempts to shift the distribution: keep the 65% task completion rate while reducing the tail of incidents that consume more engineering time than the automation saves. The approval gate on high-risk actions is not primarily about risk aversion  - it is about preserving the net-positive expected value of autonomy at scale. A system that lets 90% of actions run automatically while surfacing the 10% that need human judgment can achieve higher net throughput than a system with higher raw task completion but unpredictable tail events.",
+          "Enterprise deployment requires configuration before deployment, not after. Teams should define their risk tiers explicitly: which paths in their repository are high-risk (production configs, auth modules, database schemas), which operations should never run automatically regardless of risk tier (force push, secret rotation, DNS changes), and which team members should receive approval requests for which categories. That configuration is the governance artefact that makes autonomous coding a managed process rather than an experiment. Teams that build that configuration before enabling Codex will have markedly different incident rates than teams that enable autonomy with default settings and tune later.",
+          "The Windows sandbox selection is worth noting as a distribution signal, not just a security choice. Most cloud-native engineering infrastructure runs on Linux; most enterprise on-premises infrastructure runs Windows Server. Building the Codex sandbox around App Container rather than Docker or gVisor means enterprise IT departments that manage Windows fleets already know the security model, its Group Policy integration, and its audit logging. The security review for Codex deployment in a Windows-primary enterprise is substantially shorter than it would be for a Linux-container-based alternative. OpenAI is targeting the enterprise procurement process as deliberately as it is targeting the security engineering review.",
+        ],
+        modelView:
+          "Agent value = completed low-risk work - approval drag - incident exposure. The best runtime increases the first term without letting the last term grow faster than the gain.",
+        bottomLine:
+          "Production coding agents win when they automate routine work without hiding the moments that still need a human boundary.",
+        packet: {
+          audience: defaultAudience,
+          briefing:
+            "Write a 1200-1400 word analysis of OpenAI's Codex safety architecture. Explain why approvals, network constraints, and agent-native logs are now core product features, how bounded-risk automation changes the enterprise value equation, and why control-plane quality matters as much as task success. Include one concise model for agent value under governance.",
+          targetKeyword: "OpenAI Codex safety controls 2026",
+          tone: defaultTone,
+          targetWordCount: 1300,
+          backlinkPath: "/news/ai/openai-codex-safety-controls-2026",
+          publicationTargets,
+          sourceAnchors: [
+            {
+              label: "Running Codex safely at OpenAI",
+              url: "https://openai.com/index/running-codex-safely/",
+            },
+            {
+              label: "Building a safe Windows sandbox for Codex",
+              url: "https://openai.com/index/building-codex-windows-sandbox/",
+            },
+          ],
+          keyPoints: [
+            "Why coding agents should be evaluated as governed operators rather than smarter autocomplete",
+            "How approvals, network policy, and telemetry shape real enterprise throughput",
+            "Why control-plane design is becoming a competitive axis in developer AI",
+          ],
+        },
+      },
+      {
+        slug: "gamedevbench-multimodal-agents-2026",
+        kicker: "Agent Evals",
+        date: "May 23, 2026",
+        headline:
+          "GameDevBench shows where multimodal coding agents still break",
+        dek:
+          "A new OpenReview benchmark pushes agents into game-engine tasks with code, visuals, and assets in one loop. The result is sobering: the best baseline solves only 49% of tasks.",
+        image:
+          "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "Game development workspace with code and graphical assets",
+        imageClassName: "object-center",
+        paragraphs: [
+          "GameDevBench is structured around 358 tasks drawn from publicly available web and video tutorials for Unity and Godot. The evaluation protocol is notable for what it measures: each task requires the agent to read a natural-language instruction, write or modify code in the engine's scripting language, and have the result evaluated against a behavioural test  - not a unit test, but a runtime check of whether the game object behaves correctly. That is a materially harder evaluation target than the patch-generation benchmarks that have dominated agent evaluation, because the ground truth is not a diff but a running system state.",
+          "The performance breakdown by task type is mechanistically informative. The paper reports 56.1% success on gameplay tasks, where the relationship between code and behaviour is relatively direct  - a movement script either produces the expected velocity or it does not. Success falls to 37.0% on 2D graphics tasks, where the agent must align code changes with visual output: the sprite must be positioned correctly, the animation must run at the right frame rate, the collision mesh must match the rendered shape. The 19-percentage-point gap is a measurement of the visual-code alignment penalty. The agent understands the code but cannot reliably verify its visual consequences without seeing them.",
+          "The video feedback experiment is the most technically significant result. Adding video feedback  - streaming the rendered game output back to the model as it works  - lifts Claude Sonnet 4.5 from 34.4% to 44.7%, a 30% relative improvement from a single systems change. The mechanism is straightforward: the agent can observe the delta between its expected visual outcome and the actual rendered frame, which activates a correction loop the text-only version cannot close. For sequential multi-step tasks, each unverified step compounds the error. By the time the agent reaches step five, the cumulative divergence between its internal world model and the actual game state can be large enough that its next action is based on false premises. Video feedback recalibrates the world model at each step, which is why its benefit is disproportionate relative to its implementation cost.",
+          "The underlying failure mode is what formal control theory calls an open-loop deficiency. A text-only coding agent operates with a world model derived entirely from code, documentation, and prior context. It can predict what a piece of code should do, but it cannot verify what it actually did in a rendered or interactive environment. This property is not specific to games. Web automation that handles dynamically rendered pages, design systems that require visual regression testing, scientific visualisation pipelines where the output is a figure rather than a number, and robotic process automation targeting legacy GUIs all share the same open-loop deficiency. GameDevBench is the first benchmark to measure it cleanly.",
+          "The practical implication for anyone deploying multimodal agents today is that the evaluation protocol matters as much as the model choice. An agent evaluated only on code generation quality will appear to perform well on tasks where the code is correct but the observable output is wrong. Teams deploying agents on visual-feedback-dependent tasks should build benchmark suites that include output verification  - screenshot comparison, rendered state validation, UI element detection  - as part of the task completion criteria. The 44.7% versus 34.4% result shows that investment in visual feedback loops has measurable return even with current models. The teams that build that infrastructure now will have a more accurate picture of where their agents actually fail.",
+          "The benchmark also has a less obvious implication for model scaling. The standard assumption is that better models solve more tasks because they reason better over code. GameDevBench suggests that some of the remaining performance gap is not primarily a reasoning deficit  - it is a feedback deficit. Providing the model with the right environmental state at each step matters more than scaling up its parameter count, at least for multimodal control tasks. That shifts the near-term research priority from training-time capability to inference-time environment design: how to give models the right inputs, not just how to make models smarter at processing the wrong ones.",
+        ],
+        modelView:
+          "Agent performance falls when the environment adds state the model cannot directly inspect or compare. Better feedback reduces that hidden-state penalty faster than another narrow text benchmark does.",
+        bottomLine:
+          "The next useful agent benchmark is not harder because it has more code. It is harder because the code is no longer the whole environment.",
+        packet: {
+          audience: defaultAudience,
+          briefing:
+            "Write a 1200-1400 word explainer on GameDevBench and what it reveals about multimodal coding agents. Explain the benchmark structure, why visual feedback changes results, and how this maps onto real agent deployment outside games. Include one compact framing for hidden-state penalty in agent performance.",
+          targetKeyword: "GameDevBench multimodal coding agents 2026",
+          tone: defaultTone,
+          targetWordCount: 1300,
+          backlinkPath: "/news/ai/gamedevbench-multimodal-agents-2026",
+          publicationTargets,
+          sourceAnchors: [
+            {
+              label: "GameDevBench on OpenReview",
+              url: "https://openreview.net/forum?id=EpubMlj8im",
+            },
+          ],
+          keyPoints: [
+            "Why multimodal environment control is a better test than narrow patch benchmarks for many agent workflows",
+            "What the 49% solve rate says about current failure modes",
+            "Why feedback loops may be a faster path to improvement than model scale alone",
+          ],
+        },
+      },
+    ]),
   },
 
   //  Markets & Power 
@@ -806,26 +1055,26 @@ export const desks: NewsDesk[] = [
     id: "markets",
     label: "Markets & Power",
     intro:
-      "Data centres drove a tenfold spike in PJM capacity prices, passing $9.3 billion in costs to consumers in a single auction cycle. Tech companies are responding by building private energy infrastructure  - dedicated gas plants, nuclear PPAs, and solar farms  - that amount to a parallel grid. The line between AI infrastructure and energy infrastructure is dissolving.",
+      "The markets desk is now reading May's PJM and FERC papers as market-design documents, not just news releases. The real questions are who still gets shared reliability, who is asked to curtail first, and how concentrated large-load growth changes the pricing of adequacy.",
     feature: {
       label: "Markets & Power",
       title:
-        "Data centres have already repriced the U.S. electricity market  - and the shadow grid is the response.",
+        "Power markets are starting to treat AI load as a design variable, not just another forecast.",
       summary:
-        "PJM capacity prices have risen nearly tenfold, with data centres responsible for 63% of the increase and $9.3 billion passed to consumers in one auction. Tech companies are bypassing the regulated grid by building on-site gas plants, signing nuclear PPAs, and contracting dedicated solar. Roughly 30% of all planned data centre capacity is now expected to be off-grid. This is not an energy transition story  - it is a market structure story.",
+        "PJM's May 6 market-design paper, its May 20 strategy update, and FERC's May 21 summer reliability assessment all point in the same direction. Large-load growth is no longer just a demand forecast input. It is reshaping adequacy rules, curtailment logic, and cost allocation across the grid.",
       tags: [
-        "PJM capacity market",
-        "shadow grid",
+        "PJM market design",
+        "resource adequacy",
+        "large-load curtailment",
+        "summer reliability",
         "AI power demand",
-        "nuclear revival",
-        "energy islands",
       ],
       image:
-        "https://images.unsplash.com/photo-1604352704611-cce8fe2a4e0d?w=1080&q=80&auto=format&fit=crop",
-      imageAlt: "Aerial view of a financial district skyline at night",
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1080&q=80&auto=format&fit=crop",
+      imageAlt: "Server racks and infrastructure lighting in a data centre",
       imageClassName: "object-center",
     },
-    stories: [
+    stories: sortStoriesByDateDesc([
       {
         slug: "ai-power-market-reset-2026",
         kicker: "Power Markets",
@@ -1082,7 +1331,149 @@ export const desks: NewsDesk[] = [
           ],
         },
       },
-    ],
+      {
+        slug: "pjm-shared-reliability-market-design-2026",
+        kicker: "Market Design",
+        date: "May 6, 2026",
+        headline:
+          "PJM has moved from auction tuning to market redesign",
+        dek:
+          "PJM's new market-design paper is not a pricing note. It is a structural question about whether common reliability can survive rising demand and constrained supply without changing who hedges, who curtails, and who pays.",
+        image:
+          "https://images.unsplash.com/photo-1413882353314-73389f63b6fd?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "Electricity transmission towers under a dramatic sky",
+        imageClassName: "object-center",
+        paragraphs: [
+          "PJM's May 6 paper does something unusual for a market operator: it admits that the design assumptions underlying the current capacity market no longer match the resource mix or load structure the market has to clear. The Reliability Pricing Model was built for dispatchable thermal generation and diffuse load growth. It assumes that resources can be valued on a common ICAP-to-UCAP conversion, that the Variable Resource Requirement demand curve correctly prices the social cost of reliability, and that forward capacity obligations can be met by a pool of similar resources with similar availability profiles. All three assumptions are now under stress simultaneously.",
+          "The UCAP framework is the first technical seam. UCAP weights each resource by its Effective Load-Carrying Capability  - a probabilistic measure of how much firm load a resource can reliably support during system-stress hours. Variable renewables and battery storage receive ELCC values significantly below their nameplate capacity because their availability during critical hours correlates with weather or state of charge, not with system need. As the resource mix shifts toward weather-dependent generation, aggregate UCAP declines relative to nameplate capacity. The market can clear formally while actual reliability margins tighten  - because ELCC assumptions underestimate tail-correlated failures at scale.",
+          "The VRR demand curve is the second technical seam. PJM calibrates the curve to reflect the value of lost load relative to the cost of new entry  - steep at low capacity levels, flatter above adequacy. Neither VOLL nor CONE has been fully recalibrated for an environment where large-load data centres represent a concentrated, politically visible share of incremental demand. If VOLL is understated relative to the new load profile's sensitivity to outages, the curve is too flat at the top  - it does not pay enough for the last marginal unit of adequacy. That underpricing of tail risk is one mechanism through which the market appears to clear adequately while physical reliability worsens.",
+          "The paper's three strategic paths differ precisely in how they handle these seams. Path A (hedged common model) maintains the shared reliability standard but requires longer-dated forward capacity hedges from load-serving entities so scarcity signals reach investment decisions earlier. Path B (differential reliability model) admits that not all load will receive the same adequacy standard  - interruptible large loads accept a lower tier in exchange for different cost treatment, which requires new metering, communication, and control infrastructure to implement fairly. Path C (energy market recovery shift) recovers more fixed costs through real-time scarcity pricing and ancillary service revenue, which requires more volatile spot prices and better hedging tools across all participants.",
+          "Path B is technically the hardest to implement and the most politically contested. Differential reliability means the system knows, in real time, which loads are on firm service and which are interruptible, and can curtail the second class first without affecting the first. That requires advanced metering infrastructure capable of sub-second load-shedding commands, clear contractual demarcation at the meter level, and AGC systems that can target specific load clusters rather than issuing system-wide curtailment signals. PJM's current infrastructure was not built for that granularity. Building it requires capital expenditure and FERC tariff changes measured in years, not months  - a gap the paper names as a path without fully confronting.",
+          "The legitimacy argument is the part the market deserves to take more seriously than a standard capacity-price analysis does. PJM argues that the market's effectiveness depends on participants believing the cost-allocation logic is defensible  - that customers paying capacity charges receive a reliable service and that new entrants can recover prudent investments. Concentrated hyperscale load breaks both conditions simultaneously. It introduces a class of customers that can self-supply or negotiate, giving them structural leverage over rule-setting that diffuse residential customers do not have. That asymmetry is what 'legitimacy' means in practice, and it is a harder problem to solve than recalibrating the VRR curve.",
+        ],
+        modelView:
+          "Adequacy design = common reliability standard x forward hedging obligation x scarcity allocation rule. Change any term and the price signal alone no longer describes the full market outcome.",
+        bottomLine:
+          "When a market starts debating who still belongs inside the common reliability pool, it has already moved beyond ordinary auction stress.",
+        packet: {
+          audience: defaultAudience,
+          briefing:
+            "Write a 1200-1400 word analysis of PJM's May 6 market-design paper. Explain the shared reliability compact, the three strategic paths in the paper, and why hyperscale load turns a capacity-market discussion into a deeper institutional design question. Include one compact adequacy-design framework.",
+          targetKeyword: "PJM shared reliability market design 2026",
+          tone: defaultTone,
+          targetWordCount: 1300,
+          backlinkPath: "/news/markets/pjm-shared-reliability-market-design-2026",
+          publicationTargets,
+          sourceAnchors: [
+            {
+              label: "PJM Powering Reliability Through Market Design",
+              url: "https://www.pjm.com/-/media/DotCom/library/reports-notices/special-reports/2026/20260506-powering-reliability-through-market-design.pdf",
+            },
+          ],
+          keyPoints: [
+            "Why PJM now frames the problem as structural rather than cyclical",
+            "What the shared reliability compact means in practice for large-load growth",
+            "How the three paths imply different winners across load, generation, and policy",
+          ],
+        },
+      },
+      {
+        slug: "pjm-large-load-curtailment-strategy-2026",
+        kicker: "Planning Strategy",
+        date: "May 20, 2026",
+        headline:
+          "PJM is now treating large-load curtailment as strategy",
+        dek:
+          "PJM's latest strategy update puts data-centre and large-load curtailment inside the formal planning agenda. That is a sign that demand flexibility is moving from emergency tool to design assumption.",
+        image:
+          "https://images.unsplash.com/photo-1467579424161-6bbc141569d7?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "Wind turbines across an open landscape",
+        imageClassName: "object-center",
+        paragraphs: [
+          "PJM's May 20 strategy update normalises curtailment by placing it on the same planning agenda as capacity procurement and transmission expansion. That institutional placement matters more than the headline. Once an operator lists demand-side curtailment alongside generation and wires investment as a formal path to reliability, it is signalling that the demand side is expected to contribute to the adequacy solution, not just consume it. The precise instruments PJM has to achieve that contribution differ significantly in their operational characteristics, and those differences determine how much flexibility the operator can actually count on.",
+          "PJM currently operates demand-response programmes with different trigger conditions and performance obligations. The Capacity Performance demand-response programme requires enrolled resources to respond within 30 minutes of a curtailment order during CP commitment periods, with strict financial penalties for non-performance  - similar in structure to the obligations on generators. For data centres running at full inference load, accepting a CP-style obligation on their full facility is operationally implausible. A data centre with flexible training workloads may accept CP obligations on non-critical compute clusters. The relevant design question is whether curtailment can be scoped at the workload level rather than the building level.",
+          "Batch interruptibility at the workload level is the contractual architecture that makes this work. A data centre's aggregate metered load looks like a single block from the grid's perspective, but internally it is composed of inference serving (high priority), training jobs (lower priority, deferrable), HVAC systems (variable within bounds), and support infrastructure. Curtailment as a planning tool becomes operationally credible only when the interface between the grid and the data centre can address the workload-priority hierarchy. That requires either API-driven load control  - where the operator dispatches curtailment signals to a workload scheduler, not a building management system  - or pre-negotiated block shedding backed by automated systems that can shed training jobs reliably within the contractual window.",
+          "The site-selection implications are direct and quantifiable. A hyperscaler comparing two PJM-region sites is comparing four variables beyond land and fiber: capacity cost per MW (the cleared auction price passed through their tariff), expected curtailment frequency under the stressed scenarios PJM now models explicitly, the cost of backup generation or on-site storage to manage curtailment events, and the regulatory trajectory on cost allocation. A difference of 50 hours per year in expected curtailment exposure, at a loading of 100 MW and a service-loss cost of $5,000 per hour, is $25 million annually  - material relative to permitting cost differences between sites in the same region.",
+          "The scenario analysis in the strategy document is revealing precisely because it presents scenarios rather than a single forecast. PJM's capacity-squeeze scenario  - defined by load growth accelerating while interconnection and transmission additions lag further  - is an admission that the operator can construct a plausible trajectory in which current planning tools, including demand flexibility, may not be sufficient. Publishing that scenario in a formal strategy document signals to large loads that current terms of grid access may not remain fixed. The appropriate response for any hyperscaler with regional interconnection pending is to treat that signal as a contracting and planning input, not background noise.",
+          "The deeper structural point is about lead-time asymmetry. Interconnection queues for new generation take four to seven years to clear. Transmission upgrades take five to ten years to permit and build. Contractual demand flexibility can be structured in six to eighteen months if the regulatory pathway and technical interfaces exist. PJM's strategy update is implicitly acknowledging that flexibility is the only adequacy tool with a lead time short enough to address near-term capacity-squeeze risk. That makes the commercial architecture of curtailment  - who gets paid how much, under what trigger, with what performance obligations  - one of the most consequential market-design questions PJM has open right now.",
+        ],
+        modelView:
+          "Reliability risk = load growth - firm supply additions - contracted demand flexibility. When the first term accelerates, the system starts pricing the third term much more seriously.",
+        bottomLine:
+          "Once curtailment shows up in formal strategy documents, large-load flexibility is no longer a side topic. It is part of the market design path.",
+        packet: {
+          audience: defaultAudience,
+          briefing:
+            "Write a 1200-1400 word analysis of PJM's May 20 strategy update. Explain why large-load curtailment and demand flexibility are moving into core planning, how scenario design changes the treatment of hyperscale demand, and what this implies for differentiated reliability products. Include one simple reliability-risk equation.",
+          targetKeyword: "PJM large load curtailment strategy 2026",
+          tone: defaultTone,
+          targetWordCount: 1300,
+          backlinkPath: "/news/markets/pjm-large-load-curtailment-strategy-2026",
+          publicationTargets,
+          sourceAnchors: [
+            {
+              label: "PJM 2026 strategy development update",
+              url: "https://www.pjm.com/-/media/DotCom/committees-groups/committees/mrc/2026/20260520/20260520-item-03---2026-pjm-strategy-development-update---presentation.pdf",
+            },
+          ],
+          keyPoints: [
+            "Why curtailment has moved from emergency response to forward planning",
+            "How scenario design reveals the supply timing problem behind large-load growth",
+            "Why differentiated demand flexibility needs contractual structure to become investable",
+          ],
+        },
+      },
+      {
+        slug: "ferc-summer-reliability-large-load-2026",
+        kicker: "Summer Reliability",
+        date: "May 21, 2026",
+        headline:
+          "FERC's summer outlook makes concentrated load hard to ignore",
+        dek:
+          "FERC says summer 2026 electricity consumption should exceed each of the previous five summers. In a grid already wrestling with large new loads, that keeps reliability and cost allocation on the front foot.",
+        image:
+          "https://images.unsplash.com/photo-1610028290816-5d937a395a49?w=1080&q=80&auto=format&fit=crop",
+        imageAlt: "High-voltage transmission towers silhouetted against an orange summer sky",
+        imageClassName: "object-center",
+        paragraphs: [
+          "FERC's summer assessment quantifies the adequacy picture regionally rather than as a single national headline  - which is where the analytically useful content lives. The Mid-Atlantic BPS, which includes most of PJM, is rated adequate under normal conditions but carries elevated risk under extreme conditions, particularly given the concentration of new large loads in Northern Virginia. New England faces a structurally tighter margin, with ISO-NE's reserve margin already below its 15% target and natural gas supply constraints that worsen under cold snaps. Those are different risk profiles driven by different mechanisms, and conflating them into a single 'summer adequacy' narrative misses the operative variable.",
+          "The probabilistic methodology FERC staff uses is worth understanding, because it shapes what 'adequate' means in the report's terms. The assessment uses Loss of Load Probability and Expected Unserved Energy as reliability metrics, calculated by running a Monte Carlo simulation over a large ensemble of weather scenarios, demand realisations, and resource outage probabilities. A region passes the adequacy threshold if it meets the one-day-in-ten-years LOLP criterion across the simulation ensemble. The critical assumption embedded in that criterion is that weather, demand, and resource outages are drawn from independent distributions. When they are correlated  - as they are during prolonged heat events that simultaneously increase air-conditioning load, reduce thermal plant efficiency, and stress natural gas supply infrastructure  - the tail probabilities can be substantially larger than the Monte Carlo criterion implies.",
+          "Concentrated large loads create a specific technical challenge for this methodology. Traditional demand-side variability is geographically diffuse and weather-correlated in predictable ways: hot days in Northern Virginia drive cooling load up proportionally across a large number of small commercial and residential customers. A 500 MW data centre cluster in the same geography adds a load component that is weather-independent  - its compute load is driven by inference demand and training schedules, not temperature  - but concentrated enough that a single interconnection failure or local transmission constraint creates a step-change in the local load balance. FERC's Monte Carlo model, calibrated on historical data without this load profile, will systematically underestimate the probability of coincident events in regions with high data-centre concentrations.",
+          "The natural gas linkage adds a correlation pathway that standard LOLP models handle imperfectly. Gas-fired generation provides roughly 40% of PJM's summer capacity. In extreme heat events, gas demand for cooling and industrial processes competes with gas demand for power generation on the same pipeline infrastructure. Pipeline constraints can cause gas-fired generators to derate or trip at exactly the moment peak power demand is highest  - introducing a supply-demand correlation that classical probabilistic adequacy models, which treat fuel availability as exogenous, do not capture. FERC notes this risk qualitatively; quantifying it requires coupled gas-power flow modelling that most RTOs do not run operationally.",
+          "The practical implication for infrastructure investors is that the standard adequacy metric  - reserve margin against peak demand  - is a less reliable guide to actual risk in a correlated-stress environment than it was in the historical period it was calibrated on. A region with 15% theoretical reserve margin but high gas dependency, high data-centre concentration, and ageing transmission infrastructure has a materially different tail-risk profile than a region with the same headline margin but a more diverse resource mix and distributed load. FERC's summer reports are valuable precisely because they show the regional distribution of these risk factors, but they are not designed to quantify tail risk in the correlated-stress regime  - which is where serious reliability modelling now needs to go.",
+          "The policy consequence is that summer reliability reports are becoming de facto pre-approval documents for large-load interconnection requests. State commissions in Virginia and Maryland already require data-centre developers to demonstrate that their load addition does not materially worsen regional reliability metrics. FERC's assessment provides the reference baseline against which those demonstrations are evaluated. Once that feedback loop is established  - adequacy report shapes procedural obligations for the load categories that drove its stress findings  - the time from final investment decision to energisation for a large data-centre project will include a reliability impact study as a critical-path item.",
+        ],
+        modelView:
+          "System stress rises when high load growth coincides with weather volatility and slow infrastructure response. Concentrated demand does not need to dominate the whole grid to dominate the policy discussion.",
+        bottomLine:
+          "Summer reliability reports become market-design documents when the grid is already tight and large-load growth keeps arriving in blocks.",
+        packet: {
+          audience: defaultAudience,
+          briefing:
+            "Write a 1200-1400 word analysis of FERC's 2026 summer assessment in the context of large-load growth. Explain why normal-case adequacy can coexist with high policy sensitivity, how weather risk interacts with concentrated demand, and why cost-allocation fights intensify in a tighter system. Include one compact system-stress framing.",
+          targetKeyword: "FERC summer reliability large load 2026",
+          tone: defaultTone,
+          targetWordCount: 1300,
+          backlinkPath: "/news/markets/ferc-summer-reliability-large-load-2026",
+          publicationTargets,
+          sourceAnchors: [
+            {
+              label: "FERC summer energy market and electric reliability assessment page",
+              url: "https://www.ferc.gov/news-events/news/presentation-report-2026-summer-energy-market-and-electric-reliability-assessment",
+            },
+            {
+              label: "FERC 2026 summer assessment report PDF",
+              url: "https://www.ferc.gov/sites/default/files/2026-05/26_Summer%20Assessment_0521.pdf",
+            },
+          ],
+          keyPoints: [
+            "Why higher summer demand and extreme weather risk raise the stakes of concentrated large-load growth",
+            "How normal-case adequacy can still leave policy exposed under stressed conditions",
+            "Why system-level reliability context accelerates cost-allocation disputes",
+          ],
+        },
+      },
+    ]),
   },
 ];
 

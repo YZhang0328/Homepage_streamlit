@@ -73,7 +73,7 @@ The three news desks are:
 | Markets & Power | `markets` | Energy markets, power grids, AI electricity demand, oil/gas, macro |
 | Financial Infrastructure | `finance` | Payments, stablecoins, fintech licensing, agentic commerce |
 
-**Story count per desk:** Always maintain exactly **5 stories** per desk. The lead story (`stories[0]`) is featured full-width; the remaining 4 fill the "More Briefs" grid below it. Fewer than 5 leaves the page visually sparse; more than 5 is hard to maintain at quality.
+**Story count per desk:** Maintain a core set of **5 stories** per desk by default. If the user explicitly asks for more, extend beyond 5 only with genuinely distinct, high-signal additions. In those cases, keep the first 5 as the editorial core and make sure any extra stories are recent enough and different enough in mechanism or search intent to justify the added count.
 
 **Content process for each refresh:**
 1. **Research** — Search for the past 2–4 weeks' most significant developments in the desk topic. Focus on developments with structural or quantitative significance, not just press releases.
@@ -90,6 +90,7 @@ The three news desks are:
   - `modelView`: 1–2 sentences with a quantitative or systems framing of the core insight
   - `bottomLine`: 1 crisp sentence — the single takeaway an analyst would write in a research note
 - **No filler.** Every paragraph must add information or argument not in the previous one.
+- **Length discipline:** New stories should stay broadly comparable in density and reading length to the stronger existing long-form stories already on the page unless the user explicitly asks for shorter briefs.
 - **No invented facts.** If a number or claim is used, there must be a real source for it.
 - **Tone:** Formal, analytical, institutionally credible. This is a professional's reading list, not a blog.
 
@@ -139,6 +140,9 @@ To find a photo ID: search [unsplash.com](https://unsplash.com), open a photo, a
 - Prefer landscape or square photos.
 - Test the URL in a browser before adding it to confirm the photo ID is valid.
 - Do not reuse the same photo ID across two stories in the same desk.
+- During one refresh, avoid visually repetitive images across the newly added stories even if the photo IDs differ. If two candidate images communicate nearly the same scene, replace one.
+- If an arXiv, OpenReview, or official paper/slide figure is materially better than stock photography, it is allowed. When used, add a visible `imageCredit` in the story data naming the source.
+- For paper or slide figures, prefer figures that directly support the article's mechanism or benchmark discussion. Do not use a paper image just because it is available.
 
 ---
 
@@ -163,9 +167,6 @@ Credentials live in `portfolio-next/.env.publish` (git-ignored).
 | Hashnode | API token + pub ID | ✅ Active |
 | WordPress.com (`yujiazhanguk.wordpress.com`) | Application password | ✅ Active |
 | **Medium** | **Manual import only** | ⚠ API closed Jan 2025 |
-| Write.as | Paid plan required | ❌ Removed |
-| Ghost | Paid plan required | ❌ Removed |
-| Tumblr | Wrong audience (art/fandom) | ❌ Removed |
 
 **Medium workflow (manual, ~2 min per article):**
 1. Publish to DEV first via the script

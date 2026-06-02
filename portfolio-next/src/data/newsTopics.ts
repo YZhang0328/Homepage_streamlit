@@ -149,6 +149,24 @@ export const storyTopicSlugs: Record<string, string[]> = {
     "regulation",
     "fintech",
   ],
+  "coinbase-checkout-stablecoin-acceptance-2026": [
+    "stablecoins",
+    "payments",
+    "fintech",
+    "treasury",
+  ],
+  "mastercard-yellow-card-stablecoin-corridors-2026": [
+    "stablecoins",
+    "payments",
+    "treasury",
+    "fintech",
+  ],
+  "adyen-sap-unified-payment-stack-2026": [
+    "payments",
+    "fintech",
+    "treasury",
+    "regulation",
+  ],
   "mcp-97-million-installs-standard": ["mcp", "agents", "enterprise-ai"],
   "anthropic-enterprise-dominance-2026": [
     "enterprise-ai",
@@ -165,6 +183,16 @@ export const storyTopicSlugs: Record<string, string[]> = {
     "ai-governance",
     "agents",
     "software-engineering",
+  ],
+  "openai-codex-safety-controls-2026": [
+    "agents",
+    "software-engineering",
+    "ai-governance",
+  ],
+  "gamedevbench-multimodal-agents-2026": [
+    "agents",
+    "software-engineering",
+    "ai-governance",
   ],
   "pjm-capacity-prices-data-centers-2026": [
     "rate-design",
@@ -184,6 +212,22 @@ export const storyTopicSlugs: Record<string, string[]> = {
   "energy-islands-shadow-grid-2026": [
     "energy-islands",
     "data-centres",
+    "electricity",
+  ],
+  "pjm-shared-reliability-market-design-2026": [
+    "rate-design",
+    "power-markets",
+    "electricity",
+  ],
+  "pjm-large-load-curtailment-strategy-2026": [
+    "load-growth",
+    "power-markets",
+    "electricity",
+  ],
+  "ferc-summer-reliability-large-load-2026": [
+    "rate-design",
+    "load-growth",
+    "power-markets",
     "electricity",
   ],
   "oil-supply-shock-math": ["oil", "macro", "power-markets"],

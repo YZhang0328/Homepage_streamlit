@@ -340,7 +340,7 @@ function MarketsGuidePanel({
       {relatedStories.length > 0 && (
         <div className="mt-6 rounded-2xl border border-dashed border-border bg-accent p-4">
           <div className="mt-4 grid gap-4 md:grid-cols-3">
-            {relatedStories.slice(0, 3).map((story) => (
+            {relatedStories.map((story) => (
               <BriefCard
                 key={story.slug}
                 story={story}
@@ -393,7 +393,7 @@ function FinanceGuidePanel({
       {relatedStories.length > 0 && (
         <div className="mt-6 rounded-2xl border border-dashed border-border bg-accent p-4">
           <div className="mt-4 grid gap-4 md:grid-cols-3">
-            {relatedStories.slice(0, 3).map((story) => (
+            {relatedStories.map((story) => (
               <BriefCard
                 key={story.slug}
                 story={story}
@@ -520,14 +520,21 @@ function ArticleView({
       </button>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[17rem_minmax(0,1fr)] lg:items-start">
-        <div className="overflow-hidden rounded-2xl border border-border bg-neutral-100">
-          <div className="aspect-[4/5]">
-            <img
-              src={story.image}
-              alt={story.imageAlt}
-              className={cn("h-full w-full object-cover", story.imageClassName ?? "object-center")}
-            />
+        <div>
+          <div className="overflow-hidden rounded-2xl border border-border bg-neutral-100">
+            <div className="aspect-[4/5]">
+              <img
+                src={story.image}
+                alt={story.imageAlt}
+                className={cn("h-full w-full object-cover", story.imageClassName ?? "object-center")}
+              />
+            </div>
           </div>
+          {story.imageCredit && (
+            <p className="mt-2 text-xs leading-relaxed text-muted">
+              Image source: {story.imageCredit}
+            </p>
+          )}
         </div>
 
         <div>
