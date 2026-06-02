@@ -51,7 +51,7 @@ function loadEnv() {
 
 // CLI args
 
-const ALL_PLATFORMS = ["dev", "hashnode"];
+const ALL_PLATFORMS = ["dev"]; // Hashnode now requires a paid Pro plan (June 2025)
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -353,7 +353,7 @@ async function hashnodePublishedUrls(token: string, pubId: string): Promise<Set<
     const afterArg = cursor ? `, after: "${cursor}"` : "";
     const res = await fetch("https://gql.hashnode.com", {
       method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: token },
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
       body: JSON.stringify({
         query: `query GetPosts($id: ObjectId!) {
           publication(id: $id) {
@@ -389,6 +389,11 @@ async function hashnodePublishedUrls(token: string, pubId: string): Promise<Set<
 }
 
 async function publishToHashnode(story: NewsStory, desk: NewsDesk, _markdown: string, dryRun: boolean) {
+  // Hashnode free API was discontinued in June 2025 — now requires a paid Pro plan.
+  // See: https://hashnode.com/announcements/graphql-api
+  console.warn("  [Hashnode] API requires Pro plan (paid) — skipped. Publish manually at hashnode.com.");
+  return;
+
   const token = process.env.HASHNODE_TOKEN;
   const pubId = process.env.HASHNODE_PUB_ID;
   if (!token || !pubId) { console.warn("  [Hashnode] HASHNODE_TOKEN/HASHNODE_PUB_ID not set - skipping Hashnode"); return; }
@@ -415,7 +420,7 @@ async function publishToHashnode(story: NewsStory, desk: NewsDesk, _markdown: st
 
   const res = await fetch("https://gql.hashnode.com", {
     method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: token },
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     body: JSON.stringify({
       query: `mutation PublishPost($input: PublishPostInput!) {
         publishPost(input: $input) { post { url } }
@@ -617,7 +622,7 @@ async function lookupHashnodePubId() {
   }
   const res = await fetch("https://gql.hashnode.com", {
     method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: token },
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     body: JSON.stringify({
       query: `{ me { publications(first: 10) { edges { node { id title url } } } } }`,
     }),

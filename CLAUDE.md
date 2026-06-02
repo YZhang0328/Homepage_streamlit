@@ -164,7 +164,7 @@ Credentials live in `portfolio-next/.env.publish` (git-ignored).
 | Platform | Method | Status |
 |----------|--------|--------|
 | DEV Community (dev.to) | API key | ✅ Active |
-| Hashnode | API token + pub ID | ✅ Active |
+| Hashnode | Manual only (API requires paid Pro plan since June 2025) | ⚠ Manual |
 | WordPress.com (`yujiazhanguk.wordpress.com`) | Application password | ✅ Active |
 | **Medium** | **Manual import only** | ⚠ API closed Jan 2025 |
 
