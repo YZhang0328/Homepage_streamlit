@@ -16,13 +16,17 @@ import {
 } from "react-router-dom";
 
 import {
-  aiFinanceEvents,
   desks,
   type DeskId,
   type EventListing,
   type FeaturePanelData,
   type NewsDesk,
   type NewsStory,
+  eventsSectionDescription,
+  eventsSectionLabel,
+  findActiveEventBySlug,
+  getActiveAiFinanceEvents,
+  slugifyEventTitle,
 } from "@/data/newsDesk";
 import { getStoryTopics, getTopicsWithCounts } from "@/data/newsTopics";
 import { getTopicHubs } from "@/data/topicHubs";
@@ -55,14 +59,6 @@ function buildNewsPath(sectionId: SectionId, storySlug?: string) {
 
 function buildEventPath(eventSlug?: string) {
   return eventSlug ? `/news/event/${eventSlug}` : "/news";
-}
-
-function slugifyEventTitle(title: string) {
-  return title
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
 }
 
 function toIsoDate(dateLabel: string) {
@@ -600,6 +596,7 @@ export default function News() {
       : defaultSectionId;
   const routeStorySlug = params.story ?? searchParams.get("story") ?? undefined;
   const routeEventSlug = params.event ?? searchParams.get("event") ?? undefined;
+  const activeEvents = getActiveAiFinanceEvents();
 
   const activeSectionId = routeSectionId;
   const activeDesk =
@@ -611,9 +608,7 @@ export default function News() {
     activeDesk?.stories.find((story) => story.slug === selectedSlug) ?? null;
   const selectedEvent =
     routeSectionId === "events" && routeEventSlug
-      ? aiFinanceEvents.find(
-          (event) => slugifyEventTitle(event.title) === routeEventSlug
-        ) ?? null
+      ? findActiveEventBySlug(routeEventSlug) ?? null
       : null;
 
   useEffect(() => {
@@ -755,11 +750,15 @@ export default function News() {
     return (
       <div className="space-y-4">
         <p className="mb-6 max-w-[58rem] text-sm leading-relaxed text-muted md:text-[0.98rem]">
-          Practical AI sessions and finance-focused gatherings worth tracking,
-          from Microsoft agent workshops to London payments and capital-markets
-          conferences.
+          {eventsSectionDescription}
         </p>
-        {aiFinanceEvents.map((event) => (
+        {activeEvents.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-border bg-card p-5 text-sm leading-relaxed text-muted">
+            No active events are listed right now. Check back soon for the next
+            AI, finance, and energy-market gatherings.
+          </div>
+        ) : null}
+        {activeEvents.map((event) => (
           <EventCard
             key={event.title}
             event={event}
@@ -771,7 +770,7 @@ export default function News() {
   };
 
   const tabs: Array<{ id: SectionId; label: string }> = [
-    { id: "events", label: "AI & Finance Events" },
+    { id: "events", label: eventsSectionLabel },
     { id: "ai", label: "AI News" },
     { id: "markets", label: "Markets & Power" },
     { id: "finance", label: "Financial Infrastructure" },
@@ -782,7 +781,7 @@ export default function News() {
     : selectedEvent
       ? `${selectedEvent.title} | Signal Board`
     : activeSectionId === "events"
-      ? "AI & Finance Events | Signal Board"
+      ? `${eventsSectionLabel} | Signal Board`
       : `${activeDesk?.label ?? "Signal Board"} | Signal Board`;
 
   const pageDescription = selectedStory
@@ -790,9 +789,9 @@ export default function News() {
     : selectedEvent
       ? selectedEvent.description
     : activeSectionId === "events"
-      ? "Practical AI sessions and finance-focused gatherings worth tracking, from Microsoft agent workshops to London capital-markets events."
+      ? eventsSectionDescription
       : activeDesk?.intro ??
-        "A live board for financial infrastructure, AI, market transmission, and London events.";
+        "A live board for financial infrastructure, AI, market transmission, and energy-market events.";
 
   const canonicalPath = selectedEvent
     ? buildEventPath(routeEventSlug)
@@ -896,7 +895,7 @@ export default function News() {
         </h1>
         <p className="mt-4 max-w-[56rem] text-[1.02rem] leading-relaxed text-muted md:text-[1.1rem]">
           A live board for financial infrastructure, AI, market
-          transmission, and London events.
+          transmission, and energy-market events.
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-2">
           <Link
@@ -942,7 +941,7 @@ export default function News() {
           ))}
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
-          {["financial infrastructure", "agent infrastructure", "energy transmission", "London events"].map(
+          {["financial infrastructure", "agent infrastructure", "energy transmission", "energy-market events"].map(
             (pill) => (
               <span
                 key={pill}

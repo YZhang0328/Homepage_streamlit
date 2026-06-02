@@ -61,99 +61,172 @@ export interface EventListing {
   type: string;
 }
 
+export const eventsSectionLabel = "AI & Finance & Energy Market Events";
+export const eventsSectionDescription =
+  "Practical AI, finance, and energy-market gatherings worth tracking, from builder meetups and AI Summit week to London capital-markets and energy conferences.";
+
 const publicationTargets = ["website", "medium", "dev.to", "hashnode"];
 const defaultAudience =
   "Investors, operators, energy modellers, and technically literate readers who want institutional-quality analysis at the intersection of AI, energy, and financial markets.";
 const defaultTone =
   "Bloomberg-style lead, professional analytical body, mathematically literate framing, and a concise strategic close.";
 
+const monthNames = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
+];
+
+function monthNameToIndex(monthName: string) {
+  return monthNames.indexOf(monthName.toLowerCase());
+}
+
+function createDateAtLocalNoon(year: number, monthIndex: number, day: number) {
+  return new Date(year, monthIndex, day, 12, 0, 0, 0);
+}
+
+function endOfMonthAtLocalNoon(year: number, monthIndex: number) {
+  return new Date(year, monthIndex + 1, 0, 12, 0, 0, 0);
+}
+
+function parseEventEndDate(dateLabel: string) {
+  const singleDayMatch = dateLabel.match(/^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})$/);
+  if (singleDayMatch) {
+    const monthIndex = monthNameToIndex(singleDayMatch[1]);
+    if (monthIndex >= 0) {
+      return createDateAtLocalNoon(
+        Number(singleDayMatch[3]),
+        monthIndex,
+        Number(singleDayMatch[2])
+      );
+    }
+  }
+
+  const rangeMatch = dateLabel.match(
+    /^([A-Za-z]+)\s+(\d{1,2})-(\d{1,2}),\s*(\d{4})$/
+  );
+  if (rangeMatch) {
+    const monthIndex = monthNameToIndex(rangeMatch[1]);
+    if (monthIndex >= 0) {
+      return createDateAtLocalNoon(
+        Number(rangeMatch[4]),
+        monthIndex,
+        Number(rangeMatch[3])
+      );
+    }
+  }
+
+  const monthOnlyMatch = dateLabel.match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (monthOnlyMatch) {
+    const monthIndex = monthNameToIndex(monthOnlyMatch[1]);
+    if (monthIndex >= 0) {
+      return endOfMonthAtLocalNoon(Number(monthOnlyMatch[2]), monthIndex);
+    }
+  }
+
+  const parsed = Date.parse(dateLabel);
+  return Number.isNaN(parsed) ? undefined : new Date(parsed);
+}
+
+function startOfDay(date: Date) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+export function slugifyEventTitle(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function isEventActive(event: EventListing, referenceDate = new Date()) {
+  const eventEndDate = parseEventEndDate(event.date);
+
+  if (!eventEndDate) {
+    return true;
+  }
+
+  return startOfDay(eventEndDate) >= startOfDay(referenceDate);
+}
+
+export function getActiveAiFinanceEvents(referenceDate = new Date()) {
+  return aiFinanceEvents.filter((event) => isEventActive(event, referenceDate));
+}
+
+export function findActiveEventBySlug(
+  eventSlug: string,
+  referenceDate = new Date()
+) {
+  return getActiveAiFinanceEvents(referenceDate).find(
+    (event) => slugifyEventTitle(event.title) === eventSlug
+  );
+}
+
 //  Events 
 
 export const aiFinanceEvents: EventListing[] = [
   {
-    title: "AI Power Platform Bootcamp",
-    date: "April 24, 2026",
-    venue: "Microsoft London, 2 Kingdom Street, London W2 6BD",
+    title:
+      "AI Tinkerers London - 8th June featuring fireside chat with Winston Weinberg, CEO of Harvey",
+    date: "June 8, 2026",
+    venue: "Address shared on RSVP acceptance, London",
     price: "Free",
     description:
-      "A practical Microsoft-hosted day for teams who want hands-on exposure to enterprise AI, Copilot agents, Power Platform, and implementation workflows. Strong for practitioners who want to move from AI curiosity to deployment.",
-    link: "https://www.eventbrite.co.uk/e/ai-power-platform-bootcamp-microsoft-london-paddington-24th-april-2026-tickets-1976355017058",
-    source: "Eventbrite / Microsoft",
-    type: "AI Bootcamp",
-  },
-  {
-    title: "Build Your Own Custom AI Copilot Agent",
-    date: "April 24, 2026",
-    venue: "Microsoft London Paddington, London",
-    price: "Free",
-    description:
-      "Focused on custom Copilot agents, Copilot Studio, Power Platform, and MCP-adjacent workflow design. Directly relevant to anyone building agentic tools inside Microsoft's enterprise stack.",
-    link: "https://www.eventbrite.co.uk/cc/microsoft-london-paddington-2026-4810925",
-    source: "Eventbrite / Microsoft",
-    type: "AI Builder Event",
-  },
-  {
-    title: "London FinTechs April Networking at the Gherkin",
-    date: "April 21, 2026",
-    venue: "The Sterling in the Gherkin, London",
-    price: "Paid",
-    description:
-      "A long-running City networking format for fintech operators, founders, investors, and service providers. Solid for meeting practitioners across payments, lending, and infrastructure.",
-    link: "https://www.eventbrite.co.uk/e/london-fintechs-april-2026-networking-make-connections-at-the-gherkin-tickets-1979043908605",
-    source: "London FinTechs",
-    type: "Finance Networking",
-  },
-  {
-    title: "AI Tinkerers London  - Monthly Builder Meetup",
-    date: "Monthly (check website for next session)",
-    venue: "Various London venues  - see website",
-    price: "Free",
-    description:
-      "Monthly practitioner meetup for AI engineers and builders, featuring live code demos from local teams. Consistently high technical quality with no vendor pitches. One of the best free recurring events in London for hands-on AI development.",
-    link: "https://london.aitinkerers.org/",
-    source: "AI Tinkerers",
+      "Hands-on AI builder meetup with a fireside chat featuring Harvey CEO Winston Weinberg plus technical demos from London teams. High signal for engineers who want practical discussion rather than vendor decks.",
+    link: "https://london.aitinkerers.org/p/ai-tinkerers-london-8th-june-featuring-fireside-chat-with-winston-weinberg-ceo-of-harvey",
+    source: "AI Tinkerers London",
     type: "Engineering Meetup",
   },
   {
-    title: "MLcon London 2026",
-    date: "May 11-15, 2026",
-    venue: "Park Plaza Victoria London",
-    price: "Registration",
-    description:
-      "Multi-track technical conference covering machine learning engineering, LLM deployment, inference optimisation, and production ML systems. Expo on May 12-13 is open access.",
-    link: "https://mlconference.ai/london/",
-    source: "MLcon",
-    type: "ML Conference",
-  },
-  {
-    title: "The AI Summit London  - Fringe Events",
+    title: "The AI Summit London - Fringe Events",
     date: "June 8-14, 2026",
-    venue: "Various London venues (London Tech Week)",
+    venue: "Various London venues",
     price: "Free (fringe)",
     description:
-      "Partner-led free events running alongside the main AI Summit during London Tech Week. Includes meetups, roundtables, and networking across AI in finance, energy, and enterprise. Free fringe access; main summit requires a pass.",
+      "Partner-led AI events running across London Tech Week, including curated meetups, executive sessions, and builder gatherings around the main summit. Useful if you want free, higher-signal side events without buying a full conference pass.",
     link: "https://london.theaisummit.com/conference-agenda/fringe-events/",
     source: "The AI Summit London",
     type: "AI Conference Week",
   },
   {
-    title: "Momentum AI London 2026",
-    date: "June 23-24, 2026",
-    venue: "London (venue TBC)",
+    title: "The AI Summit London",
+    date: "June 10-11, 2026",
+    venue: "Tobacco Dock, Wapping Lane, London E1W 2SF",
     price: "Registration",
     description:
-      "Reuters Events-produced gathering for senior decision-makers at the intersection of AI, finance, and enterprise operations. Features Chatham House roundtables, closed-door strategy labs, and multi-stakeholder panels. Strong signal-to-noise ratio for practitioners.",
+      "One of the strongest London Tech Week anchor events for applied commercial AI, with enterprise case studies, technical sessions, and decision-maker-heavy attendance. Best fit for teams tracking deployment, governance, and AI platform strategy.",
+    link: "https://london.theaisummit.com/",
+    source: "The AI Summit London",
+    type: "AI Conference",
+  },
+  {
+    title: "Momentum AI London 2026",
+    date: "June 29-30, 2026",
+    venue: "London",
+    price: "Registration",
+    description:
+      "Reuters Events summit for enterprise AI leaders, with a dedicated AI-in-finance forum alongside roundtables on governance, ROI, data readiness, and operating models. Strong option for senior operators who want practitioner discussion over expo noise.",
     link: "https://events.reutersevents.com/momentum/london/ai-in-finance",
     source: "Reuters Events",
     type: "AI in Finance Summit",
   },
   {
     title: "Energy Intelligence Forum 2026",
-    date: "October 2026 (dates TBC  - check website)",
+    date: "October 2026",
     venue: "London",
     price: "Registration",
     description:
-      "The 47th Energy Intelligence Forum brings together 500+ delegates from 45+ countries  - private sector, government, and civil society  - to address global energy challenges. The premier annual gathering for energy market professionals, formerly known as Oil & Money.",
+      "A two-day London forum for energy leaders, investors, and policymakers focused on the strategic energy transition, market structure, and infrastructure decisions shaping the sector. Strong fit for the AI-energy-power side of the page.",
     link: "https://www.energyintelligenceforum.com/",
     source: "Energy Intelligence",
     type: "Energy Summit",

@@ -6,7 +6,14 @@ import { renderToString } from "react-dom/server";
 import { MemoryRouter } from "react-router-dom";
 
 import AppFrame from "../src/AppFrame.tsx";
-import { desks, aiFinanceEvents } from "../src/data/newsDesk.ts";
+import {
+  desks,
+  eventsSectionDescription,
+  eventsSectionLabel,
+  findActiveEventBySlug,
+  getActiveAiFinanceEvents,
+  slugifyEventTitle,
+} from "../src/data/newsDesk.ts";
 import {
   getAllStories,
   getStoriesForTopic,
@@ -80,14 +87,7 @@ function findDesk(deskId: string) {
 }
 
 function findEvent(eventSlug: string) {
-  return aiFinanceEvents.find(
-    (event) =>
-      event.title
-        .toLowerCase()
-        .replace(/&/g, "and")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "") === eventSlug
-  );
+  return findActiveEventBySlug(eventSlug);
 }
 
 function getSeoForPath(pathname: string): SeoSpec {
@@ -140,9 +140,8 @@ function getSeoForPath(pathname: string): SeoSpec {
 
   if (pathname === "/news") {
     return {
-      title: "AI & Finance Events | Signal Board",
-      description:
-        "Practical AI sessions and finance-focused gatherings worth tracking, from Microsoft agent workshops to London capital-markets events.",
+      title: `${eventsSectionLabel} | Signal Board`,
+      description: eventsSectionDescription,
       canonicalPath: "/news",
       type: "website",
     };
@@ -287,10 +286,10 @@ function getSeoForPath(pathname: string): SeoSpec {
   if (eventMatch) {
     const event = findEvent(eventMatch[1]);
     return {
-      title: event ? `${event.title} | Signal Board` : "AI & Finance Events | Signal Board",
+      title: event ? `${event.title} | Signal Board` : `${eventsSectionLabel} | Signal Board`,
       description: event
         ? event.description
-        : "Practical AI sessions and finance-focused gatherings worth tracking, from Microsoft agent workshops to London capital-markets events.",
+        : eventsSectionDescription,
       canonicalPath: event ? `/news/event/${eventMatch[1]}` : "/news",
       type: "website",
       jsonLd: event
@@ -398,7 +397,7 @@ function getSeoForPath(pathname: string): SeoSpec {
   return {
     title: "Yujia Zhang | Signal Board",
     description:
-      "A live board for financial infrastructure, consequential AI, market transmission, and the events worth showing up for.",
+      "A live board for financial infrastructure, consequential AI, market transmission, and the energy-market events worth showing up for.",
     canonicalPath: pathname,
     type: "website",
   };
@@ -464,12 +463,8 @@ function main() {
   const template = readFileSync(templatePath, "utf8");
   const routes = new Set(readSitemapRoutes());
 
-  for (const event of aiFinanceEvents) {
-    const slug = event.title
-      .toLowerCase()
-      .replace(/&/g, "and")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+  for (const event of getActiveAiFinanceEvents()) {
+    const slug = slugifyEventTitle(event.title);
     routes.add(`/news/event/${slug}`);
   }
 
