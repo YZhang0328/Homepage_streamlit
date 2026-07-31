@@ -290,8 +290,9 @@ export default function Home() {
               What I Do
             </h2>
             <p className="mt-4 text-muted leading-relaxed">
-              After transitioning from academia, I work as an energy modeller
-              specializing in energy market optimization.
+              After transitioning from academia, I worked as an energy modeller
+              before moving into a front-office quantitative role focused on market
+              analysis and optimisation.
             </p>
             <img
               src="/images/Aurora_refined.gif"
@@ -304,7 +305,7 @@ export default function Home() {
             {[
               "Developing software packages to analyze and process large-scale energy market datasets, including demand, supply, plant-level, time-resolution, and interconnection flow data.",
               "Developing an optimization model of electricity distribution across multiple sources (gas, coal, solar, wind, etc), generating long-term price forecasts and market insights.",
-              "Adding features to the market model including capacity market features, renewable energy certificate (REC) features, time granularity, and data warehouse integration.",
+              "Adding features to the market model including capacity market features, renewable energy features, time granularity, and data warehouse integration.",
               "Reliability check of new features through testing, including unit, integration, behavioural, and regression tests.",
               "Building power forward curves and running cross-commodity scenario analyses across European and GB markets, incorporating gas storage, LNG flows, policy shifts, and technological change.",
               'Continuously enhancing models and optimizing platform data structures: "There has to be a better way."',
