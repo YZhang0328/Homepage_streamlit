@@ -83,7 +83,7 @@ export default function Home() {
               animate="visible"
               className="mb-4 text-[0.98rem] text-muted tracking-[0.14em] uppercase md:text-[1.06rem]"
             >
-              Energy Modelling &middot; Quant Research
+              Power &amp; Gas Pricing &amp; Analytics &middot; Quant Research
             </motion.p>
 
             <motion.h1
@@ -306,7 +306,7 @@ export default function Home() {
               "Developing an optimization model of electricity distribution across multiple sources (gas, coal, solar, wind, etc), generating long-term price forecasts and market insights.",
               "Adding features to the market model including capacity market features, renewable energy certificate (REC) features, time granularity, and data warehouse integration.",
               "Reliability check of new features through testing, including unit, integration, behavioural, and regression tests.",
-              "Running scenario analyses in ERCOT, European, and GB markets to evaluate the impact of technological advancements, policy shifts, and economic trends on energy prices.",
+              "Building power forward curves and running cross-commodity scenario analyses across European and GB markets, incorporating gas storage, LNG flows, policy shifts, and technological change.",
               'Continuously enhancing models and optimizing platform data structures: "There has to be a better way."',
             ].map((item, i) => (
               <motion.div

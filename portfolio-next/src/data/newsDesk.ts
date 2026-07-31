@@ -64,7 +64,7 @@ export interface EventListing {
 
 export const eventsSectionLabel = "AI & Finance & Energy Market Events";
 export const eventsSectionDescription =
-  "Practical AI, finance, and energy-market gatherings worth tracking, from builder meetups and AI Summit week to London capital-markets and energy conferences.";
+  "Upcoming London and online gatherings at the intersection of applied AI, financial infrastructure, quantitative markets, and energy systems.";
 
 const publicationTargets = ["website", "medium", "dev.to", "hashnode"];
 const defaultAudience =
@@ -188,70 +188,114 @@ export function findActiveEventBySlug(
 
 export const aiFinanceEvents: EventListing[] = [
   {
-    title: "AI Tinkerers London - 8th June featuring fireside chat",
-    date: "June 8, 2026",
-    venue: "Address shared on RSVP acceptance, London",
-    price: "Free",
+    title: "Artificial Intelligence in Financial Services Conference 2026",
+    date: "September 8-9, 2026",
+    venue: "Convene, 155 Bishopsgate, London EC2M 3TQ",
+    price: "Paid",
     description:
-      "AI Tinkerers London - 8th June featuring fireside chat plus technical demos from London teams. High signal for engineers who want practical discussion rather than vendor decks.",
-    link: "https://london.aitinkerers.org/p/ai-tinkerers-london-8th-june-featuring-fireside-chat-with-winston-weinberg-ceo-of-harvey",
-    source: "AI Tinkerers London",
-    type: "Engineering Meetup",
+      "A practitioner-focused programme on deploying AI across banking, insurance, risk, operations, and customer services. Useful for tracking how regulated institutions are moving from pilots to governed production systems.",
+    link: "https://aiinfinancesummit.com/live/en/page/home",
+    source: "Arena International",
+    type: "AI in Finance Conference",
   },
   {
-    title: "The AI Summit London - Fringe Events",
-    date: "June 8-14, 2026",
-    venue: "Various London venues",
-    price: "Free (fringe)",
-    description:
-      "Partner-led AI events running across London Tech Week, including curated meetups, executive sessions, and builder gatherings around the main summit. Useful if you want free, higher-signal side events without buying a full conference pass.",
-    link: "https://london.theaisummit.com/conference-agenda/fringe-events/",
-    source: "The AI Summit London",
-    type: "AI Conference Week",
-  },
-  {
-    title: "The AI Summit London",
-    date: "June 10-11, 2026",
-    venue: "Tobacco Dock, Wapping Lane, London E1W 2SF",
-    price: "Registration",
-    description:
-      "One of the strongest London Tech Week anchor events for applied commercial AI, with enterprise case studies, technical sessions, and decision-maker-heavy attendance. Best fit for teams tracking deployment, governance, and AI platform strategy.",
-    link: "https://london.theaisummit.com/",
-    source: "The AI Summit London",
-    type: "AI Conference",
-  },
-  {
-    title: "Momentum AI London 2026",
-    date: "June 29-30, 2026",
+    title: "IDC UK AI & Data Summit 2026",
+    date: "September 10, 2026",
     venue: "London",
     price: "Registration",
     description:
-      "Reuters Events summit for enterprise AI leaders, with a dedicated AI-in-finance forum alongside roundtables on governance, ROI, data readiness, and operating models. Strong option for senior operators who want practitioner discussion over expo noise.",
-    link: "https://events.reutersevents.com/momentum/london/ai-in-finance",
-    source: "Reuters Events",
+      "A full-day executive forum on AI deployment, data quality, governance, observability, and regulatory compliance. Best suited to data and AI leaders evaluating the operating architecture required to scale models responsibly.",
+    link: "https://event.idc.com/event/ai-data-summit-uk/",
+    source: "IDC",
+    type: "AI & Data Summit",
+  },
+  {
+    title: "AI in Finance Summit London 2026",
+    date: "September 15, 2026",
+    venue: "1 America Square, London EC3N 2LB",
+    price: "Paid",
+    description:
+      "A finance-specific AI programme featuring practitioners from banks, payments firms, and insurers. The agenda concentrates on applied machine learning, governance, operational security, and measurable deployment outcomes.",
+    link: "https://london-ai-finance.re-work.co/",
+    source: "RE-WORK",
     type: "AI in Finance Summit",
   },
   {
-    title: "Energy Intelligence Forum 2026",
-    date: "October 2026",
-    venue: "London",
+    title: "Financial Innovation Forum 2026",
+    date: "September 17, 2026",
+    venue: "The Montcalm, Mayfair, London",
+    price: "Paid",
+    description:
+      "A senior payments and RegTech forum covering account-to-account rails, open finance, digital identity, agentic AI, fraud, and cross-border infrastructure. Strong fit for operators following the interaction between automation and regulated payment systems.",
+    link: "https://www.qubevents.com/financial-innovation-forum",
+    source: "QUBE Events",
+    type: "Payments & RegTech Forum",
+  },
+  {
+    title: "AWS Financial Services Symposium London",
+    date: "September 30, 2026",
+    venue: "Town Hall, Bidborough Street, London WC1H 9AU",
+    price: "Free",
+    description:
+      "A complimentary executive event on resilient financial applications, high-performance core systems, modern data platforms, and AI agents. Attendance is aimed at director-level and senior leaders in financial services.",
+    link: "https://aws.amazon.com/events/financial-services-symposium-london/",
+    source: "AWS",
+    type: "Financial Services Technology",
+  },
+  {
+    title: "Advances in Financial Technologies 2026",
+    date: "October 6-9, 2026",
+    venue: "London School of Economics, London",
     price: "Registration",
     description:
-      "A two-day London forum for energy leaders, investors, and policymakers focused on the strategic energy transition, market structure, and infrastructure decisions shaping the sector. Strong fit for the AI-energy-power side of the page.",
-    link: "https://www.energyintelligenceforum.com/",
-    source: "Energy Intelligence",
-    type: "Energy Summit",
+      "A research-led conference on financial infrastructure, blockchains, cryptocurrencies, exchanges, and market mechanisms. One of the higher-signal options for technically rigorous work on digital markets and protocol design.",
+    link: "https://aft.acm.org/",
+    source: "ACM AFT",
+    type: "Academic Conference",
+  },
+  {
+    title: "PIMFA AI Summit 2026",
+    date: "October 8, 2026",
+    venue: "Publicis Sapient, 63 Turnmill Street, London EC1M 5NP",
+    price: "Free",
+    description:
+      "A free half-day summit on proving, scaling, and governing AI in wealth management. The programme focuses on decision systems, data readiness, explainability, operating models, and the controls regulators expect.",
+    link: "https://www.pimfa.co.uk/event/pimfa-ai-summit-2026-proving-scaling-and-governing-ai-in-wealth-management/",
+    source: "PIMFA",
+    type: "Wealth Management AI",
+  },
+  {
+    title: "Energy UK Annual Conference 2026",
+    date: "October 14, 2026",
+    venue: "London and online",
+    price: "Registration",
+    description:
+      "Energy UK's annual policy and industry conference, available both in London and by livestream. Relevant for power-market reform, investment, consumer bills, system resilience, and the delivery constraints facing the UK transition.",
+    link: "https://www.energy-uk.org.uk/event/energy-uk-annual-conference-2026/",
+    source: "Energy UK",
+    type: "Energy Policy Conference",
+  },
+  {
+    title: "FTT Fintech Festival 2026",
+    date: "November 9-10, 2026",
+    venue: "The Brewery, London",
+    price: "Registration",
+    description:
+      "A broad financial-technology programme spanning payments, embedded finance, AI, fraud, digital identity, and infrastructure. Its multi-track format is most useful for comparing how banks, fintechs, and technology providers are responding to the same operating shifts.",
+    link: "https://www.fintechtalents.com/events/europe/festival-london/",
+    source: "Fintech Talents",
+    type: "Fintech Conference",
   },
   {
     title: "FinTech Connect 2026",
     date: "December 1-2, 2026",
     venue: "ExCeL London",
-    price: "Registration",
+    price: "Free",
     description:
-      "Large enterprise-focused London event covering payments, digital transformation, compliance, and financial infrastructure. Good for understanding where regulated finance is heading on AI and stablecoin infrastructure.",
+      "A free-to-register event with dedicated tracks for AI in finance, payments, RegTech, digital assets, and digital transformation. Useful for scanning regulated-finance priorities across institutions, infrastructure vendors, and policymakers.",
     link: "https://www.fintechconnect.com/",
     source: "FinTech Connect",
-    type: "Conference",
+    type: "Fintech Conference",
   },
   {
     title: "Tokenize: LDN",
@@ -1476,6 +1520,5 @@ export const desks: NewsDesk[] = [
     ]),
   },
 ];
-
 
 
