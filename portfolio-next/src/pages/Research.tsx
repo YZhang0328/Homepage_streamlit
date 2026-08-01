@@ -132,7 +132,7 @@ export default function Research() {
       {/* Publications */}
       <div className="space-y-12">
         <h2 className="font-serif text-2xl md:text-3xl font-bold">
-          Representative Publications
+          Selected Publications
         </h2>
 
         {publications.map((pub, i) => (
