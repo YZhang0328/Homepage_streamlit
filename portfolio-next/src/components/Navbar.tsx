@@ -5,8 +5,8 @@ import { useState } from "react";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/research", label: "Research" },
-  { to: "/news", label: "Market News" },
+  { to: "/research/", label: "Research" },
+  { to: "/news/", label: "Market News" },
 ];
 
 export default function Navbar() {

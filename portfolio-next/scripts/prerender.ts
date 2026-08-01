@@ -69,11 +69,15 @@ function parseDateIso(dateLabel: string) {
 }
 
 function normalizePath(href: string) {
+  let path: string;
   if (href.startsWith(SITE_URL)) {
-    const path = href.slice(SITE_URL.length);
-    return path.startsWith("/") ? path : `/${path}`;
+    const relativePath = href.slice(SITE_URL.length);
+    path = relativePath.startsWith("/") ? relativePath : `/${relativePath}`;
+  } else {
+    path = href.startsWith("/") ? href : `/${href}`;
   }
-  return href.startsWith("/") ? href : `/${href}`;
+
+  return path.length > 1 ? path.replace(/\/+$/, "") : path;
 }
 
 function readSitemapRoutes() {

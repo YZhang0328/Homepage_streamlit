@@ -12,7 +12,11 @@ const BASE_LASTMOD_ISO = "2026-01-01T00:00:00.000Z";
 
 function absoluteUrl(path: string) {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  return `${SITE_URL}${normalizedPath}`;
+  const isPagePath =
+    normalizedPath !== "/" &&
+    !normalizedPath.endsWith("/") &&
+    !/\/[^/?#]+\.[^/?#]+(?:[?#].*)?$/.test(normalizedPath);
+  return `${SITE_URL}${normalizedPath}${isPagePath ? "/" : ""}`;
 }
 
 function getLatestStoryIso() {

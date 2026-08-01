@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 
 import Seo from "@/components/Seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, pagePath } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import {
   getHubTopics,
@@ -22,7 +22,7 @@ function HubStoryCard({
   return (
     <article className="overflow-hidden rounded-3xl border border-border bg-card">
       <Link
-        to={story.packet.backlinkPath}
+        to={pagePath(story.packet.backlinkPath)}
         className="grid gap-0 md:grid-cols-[11rem_minmax(0,1fr)]"
       >
         <div className="overflow-hidden border-b border-border bg-neutral-100 md:border-b-0 md:border-r">
@@ -79,7 +79,7 @@ function HubIndexCard({
 }) {
   return (
     <Link
-      to={`/news/hub/${slug}`}
+      to={`/news/hub/${slug}/`}
       className="rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg"
     >
       <p className="text-xs uppercase tracking-[0.18em] text-muted">{label}</p>
@@ -228,7 +228,7 @@ export default function TopicHub() {
             {hubTopics.map((topic) => (
               <Link
                 key={topic.slug}
-                to={`/news/tag/${topic.slug}`}
+                to={`/news/tag/${topic.slug}/`}
                 className="rounded-full border border-border bg-card px-3 py-1 text-xs font-mono text-muted transition-colors hover:border-foreground hover:text-foreground"
               >
                 {topic.label}
@@ -243,7 +243,7 @@ export default function TopicHub() {
             {hubStories.map((story, index) => (
               <Link
                 key={story.slug}
-                to={story.packet.backlinkPath}
+                to={pagePath(story.packet.backlinkPath)}
                 className="block rounded-2xl border border-border bg-accent p-4 transition-colors hover:border-foreground"
               >
                 <div className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted">
@@ -276,7 +276,7 @@ export default function TopicHub() {
             </h2>
           </div>
           <Link
-            to="/news/archive"
+            to="/news/archive/"
             className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-accent transition-colors"
           >
             Browse archive

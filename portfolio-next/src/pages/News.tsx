@@ -51,14 +51,14 @@ function isSectionId(value: string | null): value is SectionId {
 
 function buildNewsPath(sectionId: SectionId, storySlug?: string) {
   if (sectionId === "events") {
-    return "/news";
+    return "/news/";
   }
 
-  return storySlug ? `/news/${sectionId}/${storySlug}` : `/news/${sectionId}`;
+  return storySlug ? `/news/${sectionId}/${storySlug}/` : `/news/${sectionId}/`;
 }
 
 function buildEventPath(eventSlug?: string) {
-  return eventSlug ? `/news/event/${eventSlug}` : "/news";
+  return eventSlug ? `/news/event/${eventSlug}/` : "/news/";
 }
 
 function toIsoDate(dateLabel: string) {
@@ -556,7 +556,7 @@ function ArticleView({
             {getStoryTopics(story.slug).map((topic) => (
               <Link
                 key={topic.slug}
-                to={`/news/tag/${topic.slug}`}
+                to={`/news/tag/${topic.slug}/`}
                 className="rounded-full border border-border bg-accent px-3 py-1 text-xs font-mono text-muted transition-colors hover:border-foreground hover:text-foreground"
               >
                 {topic.label}
@@ -906,7 +906,7 @@ export default function News() {
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-2">
           <Link
-            to="/news/archive"
+            to="/news/archive/"
             className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
             Browse archive
@@ -916,7 +916,7 @@ export default function News() {
             .map((topic) => (
               <Link
                 key={topic.slug}
-                to={`/news/tag/${topic.slug}`}
+                to={`/news/tag/${topic.slug}/`}
                 className="rounded-full border border-border bg-card px-3 py-1 text-xs font-mono text-muted transition-colors hover:border-foreground hover:text-foreground"
               >
                 {topic.label}
@@ -927,7 +927,7 @@ export default function News() {
           {topicHubs.map((hub) => (
             <Link
               key={hub.slug}
-              to={`/news/hub/${hub.slug}`}
+              to={`/news/hub/${hub.slug}/`}
               className="rounded-3xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
             >
               <p className="text-xs uppercase tracking-[0.18em] text-muted">

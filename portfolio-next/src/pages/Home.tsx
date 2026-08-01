@@ -75,7 +75,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="md:pl-6 lg:pl-8">
+          <div className="md:-translate-y-6 md:pl-6 lg:-translate-y-8 lg:pl-8">
             <motion.p
               custom={0}
               variants={fadeUp}
@@ -83,7 +83,7 @@ export default function Home() {
               animate="visible"
               className="mb-4 text-[0.98rem] text-muted tracking-[0.14em] uppercase md:text-[1.06rem]"
             >
-              Power &amp; Gas Pricing &amp; Analytics &middot; Quant Research
+              Quantitative Development &amp; Research
             </motion.p>
 
             <motion.h1
@@ -117,7 +117,7 @@ export default function Home() {
               className="mt-8 flex flex-wrap gap-3"
             >
               <Link
-                to="/research"
+                to="/research/"
                 className="inline-flex items-center gap-2 rounded-full bg-foreground text-white px-6 py-3 text-sm font-medium hover:bg-neutral-800 transition-colors"
               >
                 View Research <ArrowRight size={16} />
@@ -194,7 +194,7 @@ export default function Home() {
               </h2>
             </div>
             <Link
-              to="/news/hub"
+              to="/news/hub/"
               className="inline-flex items-center gap-2 rounded-full border border-foreground px-5 py-2 text-sm font-medium transition-colors hover:bg-foreground hover:text-white w-fit"
             >
               Explore all hubs <ArrowRight size={16} />
@@ -205,7 +205,7 @@ export default function Home() {
             {topicHubs.map((hub) => (
               <Link
                 key={hub.slug}
-                to={`/news/hub/${hub.slug}`}
+                to={`/news/hub/${hub.slug}/`}
                 className="rounded-2xl border border-border bg-accent p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
               >
                 <p className="text-xs uppercase tracking-[0.18em] text-muted">
@@ -280,7 +280,7 @@ export default function Home() {
       </section>
 
       {/* What I Do */}
-      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <section className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-20">
         <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 items-start">
           <div>
             <p className="text-sm text-muted uppercase tracking-wide mb-3">
@@ -301,13 +301,12 @@ export default function Home() {
             />
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 md:pt-[2.75rem]">
             {[
               "Developing software packages to analyze and process large-scale energy market datasets, including demand, supply, plant-level, time-resolution, and interconnection flow data.",
-              "Developing an optimization model of electricity distribution across multiple sources (gas, coal, solar, wind, etc), generating long-term price forecasts and market insights.",
-              "Adding features to the market model including capacity market features, renewable energy features, time granularity, and data warehouse integration.",
+              "Developing an optimization model of electricity distribution across multiple sources (gas, coal, solar, wind, etc), generating short- and long-term price forecasts.",
               "Reliability check of new features through testing, including unit, integration, behavioural, and regression tests.",
-              "Building power forward curves and running cross-commodity scenario analyses across European and GB markets, incorporating gas storage, LNG flows, policy shifts, and technological change.",
+              "Building power forward curves and running cross-commodity scenario analyses across European and GB markets.",
               'Continuously enhancing models and optimizing platform data structures: "There has to be a better way."',
             ].map((item, i) => (
               <motion.div
@@ -318,7 +317,7 @@ export default function Home() {
                 transition={{ delay: i * 0.08 }}
                 className="flex gap-3 rounded-xl border border-border bg-card p-4"
               >
-                <span className="mt-0.5 text-xs font-mono text-muted">
+                <span className="mt-1.5 text-xs font-mono text-muted">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p className="text-sm leading-relaxed">{item}</p>
@@ -326,6 +325,49 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Founder Project */}
+      <section className="mx-auto max-w-6xl px-6 pb-16 md:pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="rounded-3xl border border-border bg-card p-7 md:p-9"
+        >
+          <p className="text-sm uppercase tracking-wide text-muted">Founder Project</p>
+          <div className="mt-3 grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+            <div>
+              <h2 className="font-serif text-3xl font-bold md:text-4xl">
+                AtlasNotes AI
+              </h2>
+              <p className="mt-4 max-w-3xl text-muted leading-relaxed">
+                I am the founder of AtlasNotes AI, a knowledge platform for
+                professionals who want their research and best thinking to compound
+                instead of disappearing across tabs, files, and one-off AI chats. It
+                turns everyday work into an organised, reusable knowledge base,
+                helping users develop stronger insights and create original work from
+                what they already know.
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-5 md:min-w-56">
+              <img
+                src="/images/atlasnotes-logo-square.png"
+                alt="AtlasNotes AI logo"
+                className="h-[6.75rem] w-[6.75rem] rounded-2xl object-cover shadow-lg"
+              />
+              <a
+                href="https://atlasnote.app/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+              >
+                Explore AtlasNotes AI <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* CTA */}

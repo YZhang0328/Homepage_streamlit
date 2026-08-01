@@ -11,7 +11,7 @@ import {
   type StoryIndexItem,
 } from "@/data/newsTopics";
 import { getTopicHubs } from "@/data/topicHubs";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, pagePath } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type ArchiveParams = {
@@ -30,7 +30,7 @@ function StoryArchiveCard({
   return (
     <article className="overflow-hidden rounded-3xl border border-border bg-card">
       <Link
-        to={story.packet.backlinkPath}
+        to={pagePath(story.packet.backlinkPath)}
         className="grid gap-0 md:grid-cols-[10rem_minmax(0,1fr)] lg:grid-cols-[12rem_minmax(0,1fr)]"
       >
         <div className="overflow-hidden border-b border-border bg-neutral-100 md:border-b-0 md:border-r">
@@ -142,13 +142,13 @@ export default function Archive() {
         {topic && (
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <Link
-              to="/news/archive"
+              to="/news/archive/"
               className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-accent transition-colors"
             >
               View all stories
             </Link>
             <Link
-              to={`/news/tag/${topic.slug}`}
+              to={`/news/tag/${topic.slug}/`}
               className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-white"
             >
               Current topic
@@ -173,7 +173,7 @@ export default function Archive() {
           {topics.map((topicItem) => (
             <Link
               key={topicItem.slug}
-              to={`/news/tag/${topicItem.slug}`}
+              to={`/news/tag/${topicItem.slug}/`}
               className={cn(
                 "rounded-full border px-3 py-1 text-xs font-mono transition-colors",
                 topic?.slug === topicItem.slug
@@ -203,7 +203,7 @@ export default function Archive() {
             </p>
           </div>
           <Link
-            to="/news/hub"
+            to="/news/hub/"
             className="rounded-full border border-border bg-accent px-4 py-2 text-sm font-medium hover:bg-white transition-colors"
           >
             View hub index
@@ -213,7 +213,7 @@ export default function Archive() {
           {topicHubs.map((hub) => (
             <Link
               key={hub.slug}
-              to={`/news/hub/${hub.slug}`}
+              to={`/news/hub/${hub.slug}/`}
               className="rounded-2xl border border-border bg-accent p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
               <p className="text-xs uppercase tracking-[0.18em] text-muted">
