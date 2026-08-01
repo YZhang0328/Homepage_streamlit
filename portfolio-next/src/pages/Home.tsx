@@ -344,9 +344,8 @@ export default function Home() {
               </h2>
               <p className="mt-4 max-w-3xl text-[1.02rem] leading-relaxed text-muted md:text-[1.1rem]">
                 I am the founder of AtlasNotes AI, a knowledge platform for
-                professionals who want their research and best thinking to compound
-                instead of disappearing across tabs, files, and one-off AI chats. It
-                turns everyday work into an organised, reusable knowledge base,
+                professionals who want their research and best thinking to compound.
+                It turns everyday work into an organised, reusable knowledge base,
                 helping users develop stronger insights and create original work from
                 what they already know.
               </p>
