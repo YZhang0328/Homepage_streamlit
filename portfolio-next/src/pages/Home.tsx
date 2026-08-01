@@ -342,7 +342,7 @@ export default function Home() {
               <h2 className="font-serif text-3xl font-bold md:text-4xl">
                 AtlasNotes AI
               </h2>
-              <p className="mt-4 max-w-3xl text-[1.02rem] leading-relaxed text-muted md:text-[1.1rem]">
+              <p className="mt-4 max-w-3xl leading-relaxed text-muted">
                 I am the founder of AtlasNotes AI, a knowledge platform for
                 professionals who want their research and best thinking to compound.
                 It turns everyday work into an organised, reusable knowledge base,
